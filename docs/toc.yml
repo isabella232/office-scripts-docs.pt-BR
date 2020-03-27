@@ -2,7 +2,7 @@
   href: index.md
 - name: Scripts do Office no Excel na Web
   items:
-    - name: Visão geral
+    - name: Visão Geral
       href: overview/excel.md
     - name: Tutoriais
       items:
@@ -10,7 +10,7 @@
           href: tutorials/excel-tutorial.md
         - name: Ler dados de pasta de trabalho com um script
           href: tutorials/excel-read-tutorial.md
-    - name: Conceitos básicos de script
+    - name: Fundamentos de script
       href: develop/scripting-fundamentals.md
     - name: Conceitos
       items:
@@ -18,19 +18,21 @@
           href: develop/javascript-objects.md
         - name: Ambiente do editor de código
           href: overview/code-editor-environment.md
+        - name: Diferenças entre scripts do Office e macros VBA
+          href: resources/vba-differences.md
         - name: Diferenças entre scripts do Office e suplementos do Office
           href: resources/add-ins-differences.md
         - name: Desfazer os efeitos de um script do Office
           href: testing/undo.md
-    - name: Solução de Problemas
+    - name: Solução de problemas
       href: testing/troubleshooting.md
     - name: Exemplos
       items:
-        - name: Scripts de exemplo
+        - name: Exemplos de scripts.
           href: resources/excel-samples.md
         - name: Cenários
           items:
-            - name: Visão geral
+            - name: Visão Geral
               href: resources/scenarios/sample-scenario-overview.md
             - name: Analisar downloads da Web
               href: resources/scenarios/analyze-web-downloads.md
