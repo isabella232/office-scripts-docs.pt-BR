@@ -1,41 +1,41 @@
 ---
-title: Conceitos básicos de script para scripts do Office no Excel na Web
-description: Informações de modelo de objeto e outros conceitos básicos para aprender antes de escrever scripts do Office.
+title: Fundamentos de script para scripts do Office no Excel na Web
+description: Informações sobre o modelo de objeto e outros fundamentos para saber mais antes de escrever scripts do Office.
 ms.date: 01/27/2020
 localization_priority: Priority
 ms.openlocfilehash: 5a709c16e23c00ffc7ee7949a3cb11459dc2d530
-ms.sourcegitcommit: b075eed5a6f275274fbbf6d62633219eac416f26
-ms.translationtype: MT
+ms.sourcegitcommit: d556aaefac80e55f53ac56b7f6ecbc657ebd426f
+ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "42700050"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "42978698"
 ---
-# <a name="scripting-fundamentals-for-office-scripts-in-excel-on-the-web-preview"></a>Conceitos básicos de script para scripts do Office no Excel na Web (visualização)
+# <a name="scripting-fundamentals-for-office-scripts-in-excel-on-the-web-preview"></a>Fundamentos de script para scripts do Office no Excel na Web (visualização)
 
-Este artigo apresentará os aspectos técnicos dos scripts do Office. Você aprenderá como os objetos do Excel trabalham juntos e como o editor de código sincroniza com uma pasta de trabalho.
+Este artigo apresentará os aspectos técnicos dos scripts do Office. Você saberá como os objetos do Excel funcionam em conjunto e como o editor de código se sincroniza com uma pasta de trabalho.
 
 [!INCLUDE [Preview note](../includes/preview-note.md)]
 
 ## <a name="object-model"></a>Modelo de objetos
 
-Para entender as APIs do Excel, você deve entender como os componentes de uma pasta de trabalho estão relacionados uns com os outros.
+Para entender as APIs do Excel, você deve entender como os componentes de uma pasta de trabalho estão relacionados entre si.
 
-- Uma **pasta de trabalho** contém uma ou mais **planilhas**.
-- Uma **planilha** dá acesso a células por meio de objetos **Range** .
-- Um **intervalo** representa um grupo de células contíguas.
-- Os **intervalos** são usados para criar e colocar **tabelas**, **gráficos**, **formas**e outros objetos de organização ou de visualização de dados.
-- Uma **planilha** contém coleções desses objetos de dados que estão presentes na planilha individual.
-- As **pastas de trabalho** contêm coleções de alguns desses objetos de dados (como **tabelas**) para a **pasta de trabalho**inteira.
+- Uma **Pasta de trabalho** contém uma ou mais **Planilhas**.
+- Uma **Planilha** concede acesso a células por meio de objetos de **Intervalo**.
+- Um **Intervalo** representa um grupo de células contíguas.
+- Os **Intervalos** são usados para criar e colocar **Tabelas**, **Gráficos**, **Formas** e outras visualizações de dados ou objetos da organização.
+- Uma **Planilha** contém coleções desses objetos de dados que estão presentes na planilha individual.
+- As **Pastas de trabalho** contêm coleções de alguns desses objetos de dados (por exemplo, **Tabelas**) para toda a **Pasta de trabalho**.
 
 ### <a name="ranges"></a>Intervalos
 
-Um intervalo é um grupo de células contíguas na pasta de trabalho. Os scripts normalmente usam notação de estilo a1 (por exemplo, **B3** para a célula única na linha **B** e coluna **3** ou **C2: F4** para as células das linhas de **C** a **F** e colunas **2** a **4**) para definir intervalos.
+Um intervalo é um grupo de células contíguas na pasta de trabalho. Os scripts geralmente usam a notação de estilo A1 (por exemplo, **B3** para a única célula na linha **B** e coluna **3** ou **C2:F4** para as células das linhas **C** a **F** e colunas **2** a **4**) para definir intervalos.
 
-Os intervalos têm três propriedades principais `values`: `formulas`, e `format`. Essas propriedades obtêm ou definem os valores de célula, as fórmulas a serem avaliadas e a formatação visual das células.
+Os intervalos têm três propriedades principais: `values`, `formulas` e `format`. Essas propriedades recebem ou definem os valores da célula, as fórmulas a serem avaliadas e a formatação visual das células.
 
-#### <a name="range-sample"></a>Amostra de intervalo
+#### <a name="range-sample"></a>Exemplo de intervalo
 
-O exemplo a seguir mostra como criar registros de vendas. Esse script usa `Range` objetos para definir os valores, fórmulas e formatos.
+O exemplo a seguir mostra como criar registros de vendas. Esse script usa objetos `Range` para definir os valores, fórmulas e formatos.
 
 ```TypeScript
 async function main(context: Excel.RequestContext) {
@@ -76,17 +76,17 @@ async function main(context: Excel.RequestContext) {
 }
 ```
 
-A execução desse script cria os seguintes dados na planilha atual:
+Executar este script cria os seguintes dados na planilha atual:
 
-![Um registro de vendas mostrando linhas de valor, uma coluna de fórmula e cabeçalhos formatados.](../images/range-sample.png)
+![Um registro de vendas mostrando as linhas de valores, uma coluna de fórmulas e cabeçalhos formatados.](../images/range-sample.png)
 
 ### <a name="charts-tables-and-other-data-objects"></a>Gráficos, tabelas e outros objetos de dados
 
-Scripts podem criar e manipular as estruturas de dados e as visualizações no Excel. Tabelas e gráficos são dois dos objetos usados com mais frequência, mas as APIs dão suporte a tabelas dinâmicas, formas, imagens e muito mais.
+Os scripts podem criar e manipular estruturas de dados e visualizações no Excel. As tabelas e gráficos são dois dos objetos mais usados, mas as APIs oferecem suporte a tabelas dinâmicas, formas, imagens e muito mais.
 
 #### <a name="creating-a-table"></a>Criar uma tabela
 
-Criar tabelas usando intervalos preenchidos por dados. Controles de formatação e tabela (como filtros) são automaticamente aplicados ao intervalo.
+Criar tabelas usando intervalos de dados preenchidos. Controles de formatação e tabela (por exemplo, filtros) são aplicados automaticamente ao intervalo.
 
 O script a seguir cria uma tabela usando os intervalos do exemplo anterior.
 
@@ -97,13 +97,13 @@ async function main(context: Excel.RequestContext) {
 }
 ```
 
-A execução desse script na planilha com os dados anteriores cria a seguinte tabela:
+Executar esse script na planilha com os dados anteriores cria a tabela a seguir:
 
 ![Uma tabela criada a partir do registro de vendas anterior.](../images/table-sample.png)
 
 #### <a name="creating-a-chart"></a>Criar um gráfico
 
-Criar gráficos para visualizar os dados em um intervalo. Os scripts permitem dezenas de variedades de gráficos, que podem ser personalizados para atender às suas necessidades.
+Crie gráficos para visualizar os dados em um intervalo. Os scripts permitem inúmeras variedades de gráficos que podem ser personalizadas de acordo com suas necessidades.
 
 O script a seguir cria um gráfico de colunas simples para três itens e o coloca 100 pixels abaixo da parte superior da planilha.
 
@@ -115,27 +115,27 @@ async function main(context: Excel.RequestContext) {
 }
 ```
 
-A execução desse script na planilha com a tabela anterior cria o seguinte gráfico:
+Executar este script na planilha com a tabela anterior cria o seguinte gráfico:
 
 ![Um gráfico de colunas mostrando as quantidades de três itens do registro de vendas anterior.](../images/chart-sample.png)
 
-### <a name="further-reading-on-the-object-model"></a>Leitura adicional no modelo de objeto
+### <a name="further-reading-on-the-object-model"></a>Leituras adicionais sobre o modelo de objeto
 
-A [documentação de referência da API de scripts do Office](/javascript/api/office-scripts/overview) é uma lista abrangente dos objetos usados em scripts do Office. Lá, você pode usar o Sumário para navegar para qualquer classe sobre a qual você gostaria de saber mais. A seguir estão várias páginas exibidas com frequência.
+A [documentação de referência de API dos scripts do Office](/javascript/api/office-scripts/overview) é uma lista completa dos objetos usados nos scripts do Office. Lá, você pode usar o sumário para navegar para qualquer classe da qual quiser saber mais. Estas são várias páginas exibidas com frequência.
 
-- [Chart](/javascript/api/office-scripts/excel/excel.chart)
-- [Comment](/javascript/api/office-scripts/excel/excel.comment)
+- [Gráfico](/javascript/api/office-scripts/excel/excel.chart)
+- [Comentário](/javascript/api/office-scripts/excel/excel.comment)
 - [PivotTable](/javascript/api/office-scripts/excel/excel.pivottable)
 - [Range](/javascript/api/office-scripts/excel/excel.range)
 - [RangeFormat](/javascript/api/office-scripts/excel/excel.rangeformat)
-- [Shape](/javascript/api/office-scripts/excel/excel.shape)
+- [Formato](/javascript/api/office-scripts/excel/excel.shape)
 - [Table](/javascript/api/office-scripts/excel/excel.table)
-- [Workbook](/javascript/api/office-scripts/excel/excel.workbook)
-- [Worksheet](/javascript/api/office-scripts/excel/excel.worksheet)
+- [Pasta de trabalho](/javascript/api/office-scripts/excel/excel.workbook)
+- [Planilha](/javascript/api/office-scripts/excel/excel.worksheet)
 
-## <a name="main-function"></a>`main`AllFunctions
+## <a name="main-function"></a>função `main`
 
-Cada script do Office deve conter `main` uma função com a assinatura a seguir, `Excel.RequestContext` incluindo a definição de tipo:
+Todos os scripts do Office devem conter uma função `main` com a seguinte assinatura, incluindo a definição de tipo `Excel.RequestContext`:
 
 ```TypeScript
 async function main(context: Excel.RequestContext) {
@@ -143,55 +143,55 @@ async function main(context: Excel.RequestContext) {
 }
 ```
 
-O código dentro da `main` função é executado quando o script é executado. `main`pode chamar outras funções no seu script, mas o código que não está contido em uma função não será executado.
+O código dentro da função `main` é executado quando o script é executado. `main` pode chamar outras funções em seu script, mas o código que não estiver contido em uma função não será executado.
 
 ## <a name="context"></a>Contexto
 
-A `main` função aceita um `Excel.RequestContext` parâmetro, chamado `context`. Considere `context` como ponte entre o script e a pasta de trabalho. O script acessa a pasta de trabalho com `context` o objeto e usa `context` -o para enviar dados de volta e para trás.
+A função `main` aceita um parâmetro `Excel.RequestContext`, chamado `context`. Imagine `context` como a ponte entre o seu script e a pasta de trabalho. Seu script acessa a pasta de trabalho com o objeto `context` e usa esse `context` para troca de dados.
 
-O `context` objeto é necessário porque o script e o Excel estão sendo executados em diferentes processos e locais. O script precisará fazer alterações ou consultar dados da pasta de trabalho na nuvem. O `context` objeto gerencia essas transações.
+O objeto `context` é necessário porque o script e o Excel estão sendo executados em processos e locais diferentes. O script precisará fazer alterações ou consultar dados da pasta de trabalho na nuvem. O objeto `context` gerencia essas transações.
 
 ## <a name="sync-and-load"></a>Sincronizar e carregar
 
-Como o script e a pasta de trabalho são executados em locais diferentes, qualquer transferência de dados entre os dois leva tempo. Para melhorar o desempenho do script, os comandos são enfileirados até que o `sync` script chame explicitamente a operação para sincronizar o script e a pasta de trabalho. O script pode funcionar independentemente até que seja necessário fazer um dos seguintes:
+Como o seu script e a pasta de trabalho são executados em locais diferentes, qualquer transferência de dados entre os dois levará algum tempo. Para melhorar o desempenho do script, os comandos são enfileirados até que o script chame explicitamente a operação `sync` para sincronizar o script e a pasta de trabalho. Seu script pode trabalhar de forma independente até que precise executar uma das seguintes ações:
 
-- Ler dados da pasta de trabalho (seguindo `load` uma operação).
-- Gravar dados na pasta de trabalho (geralmente porque o script foi concluído).
+- Ler dados da pasta de trabalho (após uma operação `load`).
+- Gravar dados na pasta de trabalho (geralmente porque o script terminou).
 
-A imagem a seguir mostra um fluxo de controle de exemplo entre o script e a pasta de trabalho:
+A imagem a seguir mostra um exemplo de fluxo de controle entre o script e a pasta de trabalho:
 
-![Um diagrama mostrando as operações de leitura e gravação indo para a pasta de trabalho do script.](../images/load-sync.png)
+![Um diagrama mostrando operações de leitura e gravação saindo do script e indo para a pasta de trabalho.](../images/load-sync.png)
 
 ### <a name="sync"></a>Sincronizar
 
-Sempre que o script precisar ler dados de ou gravar dados na pasta de trabalho, chame `RequestContext.sync` o método conforme mostrado aqui:
+Sempre que o seu script precisa ler ou gravar dados na pasta de trabalho, chame o método `RequestContext.sync`, conforme mostrado aqui:
 
 ```TypeScript
 await context.sync();
 ```
 
 > [!NOTE]
-> `context.sync()`é chamado implicitamente quando um script é encerrado.
+> `context.sync()` é chamado implicitamente quando um script termina.
 
-Após a `sync` conclusão da operação, a pasta de trabalho é atualizada para refletir as operações de gravação especificadas pelo script. Uma operação de gravação está definindo qualquer propriedade em um objeto do Excel ( `range.format.fill.color = "red"`por exemplo,) ou chamando um método que altera uma propriedade ( `range.format.autoFitColumns()`por exemplo,). A `sync` operação também lê qualquer valor da pasta de trabalho que o script solicitou usando `load` uma operação (conforme discutido na próxima seção).
+Após a conclusão da operação `sync`, a pasta de trabalho será atualizada para refletir as operações de gravação especificados por esse script. Uma operação de gravação está definindo uma propriedade em um objeto do Excel (por exemplo, `range.format.fill.color = "red"`) ou chamando um método que altera uma propriedade (por exemplo, `range.format.autoFitColumns()`). A operação `sync` também lê os valores da pasta de trabalho que o script solicitou usando uma operação `load` (conforme discutido na próxima seção).
 
-Sincronizar seu script com a pasta de trabalho pode levar tempo, dependendo da sua rede. Você deve minimizar o número de `sync` chamadas para ajudar seu script a ser executado rapidamente.  
+A sincronização do seu script com a pasta de trabalho pode demorar, dependendo da sua rede. Você deve minimizar o número de chamadas `sync` para ajudar seu script a ser executado rapidamente.  
 
 ### <a name="load"></a>Carregar
 
-Um script deve carregar dados da pasta de trabalho antes de lê-lo. No entanto, freqüentemente carregar dados de toda a pasta de trabalho reduziria imensamente a velocidade do script. Em vez disso `load` , o método permite que o seu estado de script especificamente que os dados devem ser recuperados da pasta de trabalho.
+Um script deve carregar os dados da pasta de trabalho antes de lê-los. No entanto, o carregamento frequente de dados de uma pasta de trabalho reduz significativamente a velocidade do script. Em vez disso, o método `load` permite que o seu script indique especificamente quais dados devem ser recuperados da pasta de trabalho.
 
-O `load` método está disponível em cada objeto do Excel. O script deve carregar as propriedades de um objeto antes de poder lê-las. Se isso não for feito, ocorrerá um erro.
+O método `load` está disponível em todos os objetos do Excel. Seu script deve carregar as propriedades de um objeto para poder lê-lo. Se isso não for feito, ocorrerá um erro.
 
-Os exemplos a seguir usam `Range` um objeto para mostrar as três maneiras `load` como o método pode ser usado para carregar dados.
+Os exemplos a seguir usam um objeto `Range` para mostrar as três maneiras de usar o método `load` para carregar dados.
 
-|Intent |Comando de exemplo | Efeito |
+|Finalidade |Comando de exemplo | Efeito |
 |:--|:--|:--|
-|Carregar uma propriedade |`myRange.load("values");` | Carrega uma única propriedade, neste caso, a matriz bidimensional de valores neste intervalo. |
-|Carregar várias propriedades |`myRange.load("values, rowCount, columnCount");`| Carrega todas as propriedades de uma lista delimitada por vírgulas, neste exemplo, os valores, a contagem de linhas e a contagem de colunas. |
-|Carregar tudo | `myRange.load();`|Carrega todas as propriedades no intervalo. Essa não é uma solução recomendada, já que ela tornará mais lento o script, obtendo dados desnecessários. Você só deve usar isso ao testar o script ou se precisar de todas as propriedades do objeto. |
+|Carregar uma propriedade |`myRange.load("values");` | Carrega uma única propriedade, neste caso, a matriz bidimensional de valores nesse intervalo. |
+|Carregar várias propriedades |`myRange.load("values, rowCount, columnCount");`| Carrega todas as propriedades de uma lista delimitada por vírgulas, neste exemplo, os valores, a contagem de linhas e de colunas. |
+|Carregar tudo | `myRange.load();`|Carrega todas as propriedades no intervalo. Essa não é uma solução recomendada, uma vez que diminuirá a velocidade do seu script ao obter dados desnecessários. Você só deve usar isso enquanto testa seu script ou se precisar de todas as propriedades do objeto. |
 
-O script deve chamar `context.sync()` antes de ler qualquer valor carregado.
+Seu script deve chamar `context.sync()` antes de ler os valores carregados.
 
 ```TypeScript
 let range = selectedSheet.getRange("A1:B3");
@@ -200,7 +200,7 @@ await context.sync(); // Synchronize with the workbook to get the property.
 console.log(range.rowCount); // Read and log the property value (3).
 ```
 
-Você também pode carregar Propriedades em uma coleção inteira. Cada objeto de coleção tem `items` uma propriedade que é uma matriz que contém os objetos dessa coleção. Usando `items` como o início de uma chamada hierárquica (`items\myProperty`) para `load` carregar as propriedades especificadas em cada um desses itens. O exemplo a seguir carrega `resolved` a propriedade em `Comment` cada objeto no `CommentCollection` objeto de uma planilha.
+Você também pode carregar as propriedades em uma coleção. Todos os objetos da coleção têm uma propriedade `items` que é uma matriz contendo os objetos dessa coleção. Usar `items` como o início de uma chamada hierárquica (`items\myProperty`) para `load` carrega as propriedades especificadas em cada um desses itens. O exemplo a seguir carrega a propriedade `resolved` em cada objeto `Comment` no objeto `CommentCollection` de uma planilha.
 
 ```TypeScript
 let comments = selectedSheet.comments;
@@ -209,11 +209,11 @@ await context.sync(); // Synchronize with the workbook to get the properties.
 ```
 
 > [!TIP]
-> Para saber mais sobre como trabalhar com coleções em scripts do Office, consulte a [seção matriz do artigo usando objetos JavaScript incorporados no Office scripts](javascript-objects.md#array) .
+> Para saber mais sobre como trabalhar com coleções nos scripts do Office, confira a seção Matriz do artigo [Usar objetos internos do JavaScript nos scripts do Office](javascript-objects.md#array).
 
 ## <a name="see-also"></a>Confira também
 
 - [Gravar, editar e criar scripts do Office no Excel na Web](../tutorials/excel-tutorial.md)
-- [Ler dados de pasta de trabalho com scripts do Office no Excel na Web](../tutorials/excel-read-tutorial.md)
+- [Ler os dados da pasta de trabalho com scripts do Office no Excel na Web](../tutorials/excel-read-tutorial.md)
 - [Referência da API de scripts do Office](/javascript/api/office-scripts/overview)
-- [Usando objetos JavaScript internos em scripts do Office](javascript-objects.md)
+- [Usar objetos internos do JavaScript nos scripts do Office](javascript-objects.md)
