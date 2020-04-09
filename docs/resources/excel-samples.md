@@ -1,20 +1,20 @@
 ---
 title: Scripts de exemplo para scripts do Office no Excel na Web
 description: Uma coleção de exemplos de código para usar com scripts do Office no Excel na Web.
-ms.date: 02/19/2020
+ms.date: 04/06/2020
 localization_priority: Normal
-ms.openlocfilehash: abb4064dfde8b644035e725832e481e6463e979e
-ms.sourcegitcommit: b075eed5a6f275274fbbf6d62633219eac416f26
+ms.openlocfilehash: abf6b87b63ad027cca8ee5c947b687f54815409c
+ms.sourcegitcommit: 0b2232c4c228b14d501edb8bb489fe0e84748b42
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "42700072"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "43191004"
 ---
 # <a name="sample-scripts-for-office-scripts-in-excel-on-the-web-preview"></a>Scripts de exemplo para scripts do Office no Excel na Web (visualização)
 
 Os exemplos a seguir são scripts simples para você experimentar em suas próprias pastas de trabalho. Para usá-los no Excel na Web:
 
-1. Abra a guia **automatizar** .
+1. Abra a guia **Automação**.
 2. Pressione **Editor de código**.
 3. Pressione **novo script** no painel de tarefas do editor de código.
 4. Substitua todo o script pelo exemplo de sua escolha.
@@ -47,7 +47,9 @@ async function main(context: Excel.RequestContext) {
 
 ### <a name="work-with-dates"></a>Trabalhar com datas
 
-Este exemplo usa o objeto de [Data](https://developer.mozilla.org/docs/web/javascript/reference/global_objects/date) JavaScript para obter a data e hora atuais e, em seguida, grava esses valores em duas células da planilha ativa.
+Os exemplos nesta seção mostram como usar o objeto JavaScript [Date](https://developer.mozilla.org/docs/web/javascript/reference/global_objects/date) .
+
+O exemplo a seguir obtém a data e hora atuais e, em seguida, grava esses valores em duas células da planilha ativa.
 
 ```TypeScript
 async function main(context: Excel.RequestContext) {
@@ -63,6 +65,22 @@ async function main(context: Excel.RequestContext) {
   
   // Add the time string to B1.
   timeRange.values = [[date.toLocaleTimeString()]];
+}
+```
+
+A próxima amostra lê uma data que é armazenada no Excel e a converte para um objeto de data JavaScript. Ele usa o [número de série numérico da data](https://support.office.com/article/now-function-3337fd29-145a-4347-b2e6-20c904739c46) como entrada para a data JavaScript.
+
+```TypeScript
+async function main(context: Excel.RequestContext) {
+  // Read a date at cell A1 from Excel.
+  let dateRange = context.workbook.worksheets.getActiveWorksheet().getRange("A1");
+  dateRange.load("values");
+  await context.sync();
+
+  // Convert the Excel date to a JavaScript Date object.
+  let excelDateValue = dateRange.values[0][0];
+  let javaScriptDate = new Date(Math.round((excelDateValue - 25569) * 86400 * 1000));
+  console.log(javaScriptDate);
 }
 ```
 

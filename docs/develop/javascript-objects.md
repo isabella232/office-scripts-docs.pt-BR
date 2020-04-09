@@ -1,16 +1,16 @@
 ---
-title: Usando objetos JavaScript internos em scripts do Office
+title: Usar objetos internos do JavaScript nos scripts do Office
 description: Como chamar APIs JavaScript internas de um script do Office no Excel na Web.
-ms.date: 01/21/2020
+ms.date: 04/06/2020
 localization_priority: Normal
-ms.openlocfilehash: e0fcd98117125ead18e55675e195415ff59c0c5d
-ms.sourcegitcommit: b075eed5a6f275274fbbf6d62633219eac416f26
+ms.openlocfilehash: a4b698215edea5f266e159fee0e08690904dd379
+ms.sourcegitcommit: 0b2232c4c228b14d501edb8bb489fe0e84748b42
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "42700051"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "43191011"
 ---
-# <a name="using-built-in-javascript-objects-in-office-scripts"></a>Usando objetos JavaScript internos em scripts do Office
+# <a name="using-built-in-javascript-objects-in-office-scripts"></a>Usar objetos internos do JavaScript nos scripts do Office
 
 O JavaScript fornece vários objetos internos que você pode usar em seus scripts do Office, independentemente de você estar criando scripts em JavaScript ou [TypeScript](../overview/code-editor-environment.md) (um superconjunto de JavaScript). Este artigo descreve como você pode usar alguns dos objetos JavaScript internos em scripts do Office para Excel na Web.
 
@@ -112,6 +112,8 @@ async function main(context: Excel.RequestContext) {
   range.values = [[date.toLocaleDateString()]];
 }
 ```
+
+A seção [trabalhar com datas](../resources/excel-samples.md#work-with-dates) dos exemplos tem mais scripts relacionados a datas.
 
 ## <a name="math"></a>Matemática
 
