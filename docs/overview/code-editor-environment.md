@@ -1,14 +1,14 @@
 ---
 title: Ambiente do editor de código de scripts do Office
 description: Os pré-requisitos e as informações de ambiente para scripts do Office no Excel na Web.
-ms.date: 01/21/2020
+ms.date: 04/08/2020
 localization_priority: Normal
-ms.openlocfilehash: 06318305e4e0091ce4fd8d1cd8130c474e18aed9
-ms.sourcegitcommit: b075eed5a6f275274fbbf6d62633219eac416f26
+ms.openlocfilehash: 6b26adf886172f085980bed0488b4aa7a6815991
+ms.sourcegitcommit: b13dedb5ee2048f0a244aa2294bf2c38697cb62c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "42700066"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "43215263"
 ---
 # <a name="office-scripts-code-editor-environment"></a>Ambiente do editor de código de scripts do Office
 
@@ -33,8 +33,12 @@ O IntelliSense é um recurso do editor de código que ajuda a evitar erros ortog
 
 O editor de código do Excel usa o mesmo mecanismo IntelliSense que o Visual Studio Code. Para saber mais sobre o recurso, visite os [recursos do IntelliSense do Visual Studio Code](https://code.visualstudio.com/docs/editor/intellisense#_intellisense-features).
 
+## <a name="external-library-support"></a>Suporte à biblioteca externa
+
+Os scripts do Office não oferecem suporte ao uso de bibliotecas JavaScript externas de terceiros. No momento, você não pode chamar nenhuma biblioteca além das APIs de scripts do Office de um script. Você ainda tem acesso a qualquer [objeto JavaScript interno](../develop/javascript-objects.md), como [Math](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math).
+
 ## <a name="see-also"></a>Confira também
 
 - [Referência da API de scripts do Office](/javascript/api/office-scripts/overview)
-- [Solucionando problemas de scripts do Office](../testing/troubleshooting.md)
-- [Usando objetos JavaScript internos em scripts do Office](../develop/javascript-objects.md)
+- [Solução de problemas dos scripts do Office](../testing/troubleshooting.md)
+- [Usar objetos internos do JavaScript nos scripts do Office](../develop/javascript-objects.md)
