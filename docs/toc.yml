@@ -2,25 +2,25 @@
   href: index.md
 - name: Scripts do Office no Excel na Web
   items:
-    - name: Visão Geral
+    - name: Visão geral
       href: overview/excel.md
     - name: Tutoriais
       items:
-        - name: Noções básicas de scripts do Office
+        - name: Noções básicas dos scripts do Office
           href: tutorials/excel-tutorial.md
-        - name: Ler dados de pasta de trabalho com um script
+        - name: Ler dados da pasta de trabalho com um script
           href: tutorials/excel-read-tutorial.md
     - name: Fundamentos de script
       href: develop/scripting-fundamentals.md
     - name: Conceitos
       items:
-        - name: Objetos JavaScript internos
+        - name: Objetos internos do JavaScript
           href: develop/javascript-objects.md
-        - name: Ambiente do editor de código
+        - name: Ambiente do editor de códigos
           href: overview/code-editor-environment.md
-        - name: Diferenças entre scripts do Office e macros VBA
+        - name: Diferenças entre os scripts do Office e Macros VBA
           href: resources/vba-differences.md
-        - name: Diferenças entre scripts do Office e suplementos do Office
+        - name: Diferenças entre os scripts do Office e os suplementos do Office
           href: resources/add-ins-differences.md
         - name: Desfazer os efeitos de um script do Office
           href: testing/undo.md
@@ -28,13 +28,13 @@
       href: testing/troubleshooting.md
     - name: Exemplos
       items:
-        - name: Exemplos de scripts.
+        - name: Exemplos de scripts
           href: resources/excel-samples.md
         - name: Cenários
           items:
-            - name: Visão Geral
+            - name: Visão geral
               href: resources/scenarios/sample-scenario-overview.md
             - name: Analisar downloads da Web
               href: resources/scenarios/analyze-web-downloads.md
-            - name: Calculadora de série
+            - name: Calculadora de notas
               href: resources/scenarios/grade-calculator.md
