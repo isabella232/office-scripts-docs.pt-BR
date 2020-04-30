@@ -1,14 +1,14 @@
 ---
 title: Fundamentos de script para scripts do Office no Excel na Web
 description: Informações sobre o modelo de objeto e outros fundamentos para saber mais antes de escrever scripts do Office.
-ms.date: 01/27/2020
+ms.date: 04/24/2020
 localization_priority: Priority
-ms.openlocfilehash: 5a709c16e23c00ffc7ee7949a3cb11459dc2d530
-ms.sourcegitcommit: d556aaefac80e55f53ac56b7f6ecbc657ebd426f
+ms.openlocfilehash: 8449654e359f665677f3d416a8e28fa4d6930f26
+ms.sourcegitcommit: 350bd2447f616fa87bb23ac826c7731fb813986b
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "42978698"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "43919795"
 ---
 # <a name="scripting-fundamentals-for-office-scripts-in-excel-on-the-web-preview"></a>Fundamentos de script para scripts do Office no Excel na Web (visualização)
 
@@ -29,7 +29,7 @@ Para entender as APIs do Excel, você deve entender como os componentes de uma p
 
 ### <a name="ranges"></a>Intervalos
 
-Um intervalo é um grupo de células contíguas na pasta de trabalho. Os scripts geralmente usam a notação de estilo A1 (por exemplo, **B3** para a única célula na linha **B** e coluna **3** ou **C2:F4** para as células das linhas **C** a **F** e colunas **2** a **4**) para definir intervalos.
+Um intervalo é um grupo de células contíguas na pasta de trabalho. Normalmente, os scripts normalmente usam notação de estilo A1 (ex.: **B3** para a única célula na coluna **B** e linha **3** ou **C2:F4** para as células das colunas **C** a **F** e linhas **2** a **4**) para definir intervalos.
 
 Os intervalos têm três propriedades principais: `values`, `formulas` e `format`. Essas propriedades recebem ou definem os valores da célula, as fórmulas a serem avaliadas e a formatação visual das células.
 
@@ -155,7 +155,7 @@ O objeto `context` é necessário porque o script e o Excel estão sendo executa
 
 Como o seu script e a pasta de trabalho são executados em locais diferentes, qualquer transferência de dados entre os dois levará algum tempo. Para melhorar o desempenho do script, os comandos são enfileirados até que o script chame explicitamente a operação `sync` para sincronizar o script e a pasta de trabalho. Seu script pode trabalhar de forma independente até que precise executar uma das seguintes ações:
 
-- Ler dados da pasta de trabalho (após uma operação `load`).
+- Leia os dados da pasta de trabalho (seguindo uma `load` operação ou método que retorne um [ClientResult](/javascript/api/office-scripts/excel/excel.clientresult)).
 - Gravar dados na pasta de trabalho (geralmente porque o script terminou).
 
 A imagem a seguir mostra um exemplo de fluxo de controle entre o script e a pasta de trabalho:
@@ -173,7 +173,7 @@ await context.sync();
 > [!NOTE]
 > `context.sync()` é chamado implicitamente quando um script termina.
 
-Após a conclusão da operação `sync`, a pasta de trabalho será atualizada para refletir as operações de gravação especificados por esse script. Uma operação de gravação está definindo uma propriedade em um objeto do Excel (por exemplo, `range.format.fill.color = "red"`) ou chamando um método que altera uma propriedade (por exemplo, `range.format.autoFitColumns()`). A operação `sync` também lê os valores da pasta de trabalho que o script solicitou usando uma operação `load` (conforme discutido na próxima seção).
+Após a conclusão da operação `sync`, a pasta de trabalho será atualizada para refletir as operações de gravação especificados por esse script. Uma operação de gravação está definindo uma propriedade em um objeto do Excel (por exemplo, `range.format.fill.color = "red"`) ou chamando um método que altera uma propriedade (por exemplo, `range.format.autoFitColumns()`). A `sync` operação também lê todos os valores da pasta de trabalho que o script solicitou usando uma `load` operação ou um método que retorna a `ClientResult` (conforme discutido nas próximas seções).
 
 A sincronização do seu script com a pasta de trabalho pode demorar, dependendo da sua rede. Você deve minimizar o número de chamadas `sync` para ajudar seu script a ser executado rapidamente.  
 
@@ -210,6 +210,25 @@ await context.sync(); // Synchronize with the workbook to get the properties.
 
 > [!TIP]
 > Para saber mais sobre como trabalhar com coleções nos scripts do Office, confira a seção Matriz do artigo [Usar objetos internos do JavaScript nos scripts do Office](javascript-objects.md#array).
+
+### <a name="clientresult"></a>ClientResult
+
+Os métodos que retornam informações da pasta de trabalho possuem um padrão semelhante ao `load`/`sync` paradigma. Por exemplo, `TableCollection.getCount` obtém o número de tabelas da coleção. `getCount` retorna um `ClientResult<number>`, o que significa que a `value` propriedade no retorno `ClientResult` é um número. Seu script não pode acessar esse valor até que `context.sync()` seja chamado. Assim como carregar uma propriedade, o `value` é um valor local "vazio" até a `sync` chamada.
+
+O script a seguir obtém o número total de tabelas na pasta de trabalho e registra esse número no console.
+
+```TypeScript
+async function main(context: Excel.RequestContext) {
+  let tableCount = context.workbook.tables.getCount();
+
+  // This sync call implicitly loads tableCount.value.
+  // Any other ClientResult values are loaded too.
+  await context.sync();
+
+  // Trying to log the value before calling sync would throw an error.
+  console.log(tableCount.value);
+}
+```
 
 ## <a name="see-also"></a>Confira também
 
