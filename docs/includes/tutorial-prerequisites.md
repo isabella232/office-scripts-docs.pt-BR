@@ -1,0 +1,7 @@
+[!INCLUDE [Preview note](../includes/preview-note.md)]
+
+<span data-ttu-id="e3dad-101">Antes de iniciar este tutorial, você precisará acessar os scripts do Office, que exigem o seguinte:</span><span class="sxs-lookup"><span data-stu-id="e3dad-101">Before starting this tutorial, you'll need access to Office Scripts, which requires the following:</span></span>
+
+- <span data-ttu-id="e3dad-102">[Excel na Web](https://www.office.com/launch/excel).</span><span class="sxs-lookup"><span data-stu-id="e3dad-102">[Excel on the web](https://www.office.com/launch/excel).</span></span>
+
+- <span data-ttu-id="e3dad-103">Peça ao administrador para [habilitar scripts do Office para sua organização](https://support.office.com/article/office-scripts-settings-in-m365-19d3c51a-6ca2-40ab-978d-60fa49554dcf), o que adiciona a guia **automatizar** à faixa de opções no Excel na Web.</span><span class="sxs-lookup"><span data-stu-id="e3dad-103">Ask your administrator to [enable Office Scripts for your organization](https://support.office.com/article/office-scripts-settings-in-m365-19d3c51a-6ca2-40ab-978d-60fa49554dcf), which adds the **Automate** tab to the ribbon in Excel on the web.</span></span>

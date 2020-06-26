@@ -1,157 +1,150 @@
 ---
 title: Usar objetos internos do JavaScript nos scripts do Office
 description: Como chamar APIs JavaScript internas de um script do Office no Excel na Web.
-ms.date: 04/08/2020
+ms.date: 04/24/2020
 localization_priority: Normal
-ms.openlocfilehash: 54cadb6e9ce60e631488bbe7de00c29a6db35eb7
-ms.sourcegitcommit: b13dedb5ee2048f0a244aa2294bf2c38697cb62c
+ms.openlocfilehash: b5d70e77aef79c38a8cfd680c9d03bb126c402b2
+ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "43215256"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "44878532"
 ---
-# <a name="using-built-in-javascript-objects-in-office-scripts"></a><span data-ttu-id="bdcbc-103">Usar objetos internos do JavaScript nos scripts do Office</span><span class="sxs-lookup"><span data-stu-id="bdcbc-103">Using built-in JavaScript objects in Office Scripts</span></span>
+# <a name="using-built-in-javascript-objects-in-office-scripts"></a><span data-ttu-id="ca2dd-103">Usar objetos internos do JavaScript nos scripts do Office</span><span class="sxs-lookup"><span data-stu-id="ca2dd-103">Using built-in JavaScript objects in Office Scripts</span></span>
 
-<span data-ttu-id="bdcbc-104">O JavaScript fornece vários objetos internos que você pode usar em seus scripts do Office, independentemente de você estar criando scripts em JavaScript ou [TypeScript](../overview/code-editor-environment.md) (um superconjunto de JavaScript).</span><span class="sxs-lookup"><span data-stu-id="bdcbc-104">JavaScript provides several built-in objects that you can use in your Office Scripts, regardless of whether you're scripting in JavaScript or [TypeScript](../overview/code-editor-environment.md) (a superset of JavaScript).</span></span> <span data-ttu-id="bdcbc-105">Este artigo descreve como você pode usar alguns dos objetos JavaScript internos em scripts do Office para Excel na Web.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-105">This article describes how you can use some of the built-in JavaScript objects in Office Scripts for Excel on the web.</span></span>
+<span data-ttu-id="ca2dd-104">O JavaScript fornece vários objetos internos que você pode usar em seus scripts do Office, independentemente de você estar criando scripts em JavaScript ou [TypeScript](../overview/code-editor-environment.md) (um superconjunto de JavaScript).</span><span class="sxs-lookup"><span data-stu-id="ca2dd-104">JavaScript provides several built-in objects that you can use in your Office Scripts, regardless of whether you're scripting in JavaScript or [TypeScript](../overview/code-editor-environment.md) (a superset of JavaScript).</span></span> <span data-ttu-id="ca2dd-105">Este artigo descreve como você pode usar alguns dos objetos JavaScript internos em scripts do Office para Excel na Web.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-105">This article describes how you can use some of the built-in JavaScript objects in Office Scripts for Excel on the web.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="bdcbc-106">Para obter uma lista completa de todos os objetos JavaScript internos, consulte o artigo sobre [objetos internos padrão](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects) do Mozilla.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-106">For a complete list of all built-in JavaScript objects, see Mozilla's [Standard built-in objects](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects) article.</span></span>
+> <span data-ttu-id="ca2dd-106">Para obter uma lista completa de todos os objetos JavaScript internos, consulte o artigo sobre [objetos internos padrão](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects) do Mozilla.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-106">For a complete list of all built-in JavaScript objects, see Mozilla's [Standard built-in objects](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects) article.</span></span>
 
-## <a name="array"></a><span data-ttu-id="bdcbc-107">Matriz</span><span class="sxs-lookup"><span data-stu-id="bdcbc-107">Array</span></span>
+## <a name="array"></a><span data-ttu-id="ca2dd-107">Matriz</span><span class="sxs-lookup"><span data-stu-id="ca2dd-107">Array</span></span>
 
-<span data-ttu-id="bdcbc-108">O objeto [array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array) oferece uma maneira padronizada de trabalhar com matrizes no seu script.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-108">The [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array) object provides a standardized way to work with arrays in your script.</span></span> <span data-ttu-id="bdcbc-109">Embora matrizes sejam construções JavaScript padrão, elas se relacionam aos scripts do Office de duas maneiras principais: intervalos e coleções.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-109">While arrays are standard JavaScript constructs, they relate to Office Scripts in two major ways: ranges and collections.</span></span>
+<span data-ttu-id="ca2dd-108">O objeto [array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array) oferece uma maneira padronizada de trabalhar com matrizes no seu script.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-108">The [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array) object provides a standardized way to work with arrays in your script.</span></span> <span data-ttu-id="ca2dd-109">Embora matrizes sejam construções JavaScript padrão, elas se relacionam aos scripts do Office de duas maneiras principais: intervalos e coleções.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-109">While arrays are standard JavaScript constructs, they relate to Office Scripts in two major ways: ranges and collections.</span></span>
 
-### <a name="working-with-ranges"></a><span data-ttu-id="bdcbc-110">Trabalhar com intervalos</span><span class="sxs-lookup"><span data-stu-id="bdcbc-110">Working with ranges</span></span>
+### <a name="working-with-ranges"></a><span data-ttu-id="ca2dd-110">Trabalhar com intervalos</span><span class="sxs-lookup"><span data-stu-id="ca2dd-110">Working with ranges</span></span>
 
-<span data-ttu-id="bdcbc-111">Intervalos contêm várias matrizes bidimensionais que mapeiam diretamente para as células naquele intervalo.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-111">Ranges contain several two-dimensional arrays that directly map to the cells in that range.</span></span> <span data-ttu-id="bdcbc-112">Elas incluem propriedades como `values`, `formulas`e. `numberFormat`</span><span class="sxs-lookup"><span data-stu-id="bdcbc-112">These include properties such as `values`, `formulas`, and `numberFormat`.</span></span> <span data-ttu-id="bdcbc-113">As propriedades do tipo matriz devem ser [carregadas](scripting-fundamentals.md#sync-and-load) como qualquer outra propriedade.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-113">Array-type properties must be [loaded](scripting-fundamentals.md#sync-and-load) like any other properties.</span></span>
+<span data-ttu-id="ca2dd-111">Intervalos contêm várias matrizes bidimensionais que mapeiam diretamente para as células naquele intervalo.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-111">Ranges contain several two-dimensional arrays that directly map to the cells in that range.</span></span> <span data-ttu-id="ca2dd-112">Essas matrizes contêm informações específicas sobre cada célula desse intervalo.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-112">These arrays contain specific information about each cell in that range.</span></span> <span data-ttu-id="ca2dd-113">Por exemplo, `Range.getValues` retorna todos os valores dessas células (com as linhas e colunas do mapeamento de duas dimensões bidimensionais para as linhas e colunas dessa subseção de planilha).</span><span class="sxs-lookup"><span data-stu-id="ca2dd-113">For example, `Range.getValues` returns all the values in those cells (with the rows and columns of the two-dimensional array mapping to the rows and columns of that worksheet subsection).</span></span> <span data-ttu-id="ca2dd-114">`Range.getFormulas`e `Range.getNumberFormats` são outros métodos usados com frequência que retornam matrizes, como `Range.getValues` .</span><span class="sxs-lookup"><span data-stu-id="ca2dd-114">`Range.getFormulas` and `Range.getNumberFormats` are other frequently used methods that return arrays like `Range.getValues`.</span></span>
 
-<span data-ttu-id="bdcbc-114">O script a seguir pesquisa o intervalo **a1: D4** para qualquer formato de número que contenha um "$".</span><span class="sxs-lookup"><span data-stu-id="bdcbc-114">The following script searches the **A1:D4** range for any number format containing a "$".</span></span> <span data-ttu-id="bdcbc-115">O script define a cor de preenchimento dessas células como "amarelo".</span><span class="sxs-lookup"><span data-stu-id="bdcbc-115">The script sets the fill color in those cells to "yellow".</span></span>
+<span data-ttu-id="ca2dd-115">O script a seguir pesquisa o intervalo **a1: D4** para qualquer formato de número que contenha um "$".</span><span class="sxs-lookup"><span data-stu-id="ca2dd-115">The following script searches the **A1:D4** range for any number format containing a "$".</span></span> <span data-ttu-id="ca2dd-116">O script define a cor de preenchimento dessas células como "amarelo".</span><span class="sxs-lookup"><span data-stu-id="ca2dd-116">The script sets the fill color in those cells to "yellow".</span></span>
 
 ```TypeScript
-async function main(context: Excel.RequestContext) {
+function main(workbook: ExcelScript.Workbook) {
   // Get the range From A1 to D4.
-  let range = context.workbook.worksheets.getActiveWorksheet().getRange("A1:D4");
+  let range = workbook.getActiveWorksheet().getRange("A1:D4");
 
-  // Load the numberFormat property on the range.
-  range.load("numberFormat");
-  await context.sync();
-
+  // Get the number formats for each cell in the range.
+  let rangeNumberFormats = range.getNumberFormats();
   // Iterate through the arrays of rows and columns corresponding to those in the range.
-  range.numberFormat.forEach((rowItem, rowIndex) => {
-    range.numberFormat[rowIndex].forEach((columnItem, columnIndex) => {
+  rangeNumberFormats.forEach((rowItem, rowIndex) => {
+    rangeNumberFormats[rowIndex].forEach((columnItem, columnIndex) => {
       // Treat the numberFormat as a string so we can do text comparisons.
       let columnItemText = columnItem as string;
       if (columnItemText.indexOf("$") >= 0) {
         // Set the cell's fill to yellow.
-        range.getCell(rowIndex, columnIndex).format.fill.color = "yellow";
+        range.getCell(rowIndex, columnIndex).getFormat().getFill().setColor("yellow");
       }
     });
   });
 }
 ```
 
-### <a name="working-with-collections"></a><span data-ttu-id="bdcbc-116">Trabalhar com coleções</span><span class="sxs-lookup"><span data-stu-id="bdcbc-116">Working with collections</span></span>
+### <a name="working-with-collections"></a><span data-ttu-id="ca2dd-117">Trabalhar com coleções</span><span class="sxs-lookup"><span data-stu-id="ca2dd-117">Working with collections</span></span>
 
-<span data-ttu-id="bdcbc-117">Muitos objetos do Excel estão contidos em uma coleção.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-117">Many Excel objects are contained in a collection.</span></span> <span data-ttu-id="bdcbc-118">Por exemplo, todas as [formas](/javascript/api/office-scripts/excel/excel.shape) em uma planilha estão contidas em uma [ShapeCollection](/javascript/api/office-scripts/excel/excel.shapecollection) ( `Worksheet.shapes` como a propriedade).</span><span class="sxs-lookup"><span data-stu-id="bdcbc-118">For example, all [Shapes](/javascript/api/office-scripts/excel/excel.shape) in a worksheet are contained in a [ShapeCollection](/javascript/api/office-scripts/excel/excel.shapecollection) (as the `Worksheet.shapes` property).</span></span> <span data-ttu-id="bdcbc-119">Cada `*Collection` objeto contém uma `items` Propriedade, que é uma matriz que armazena os objetos dentro dessa coleção.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-119">Each `*Collection` object contains an `items` property, which is an array that stores the objects inside that collection.</span></span> <span data-ttu-id="bdcbc-120">Isso pode ser tratado como uma matriz JavaScript normal, mas os itens da coleção precisam ser carregados primeiro.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-120">This can be treated like a normal JavaScript array, but the items in the collection have to first be loaded.</span></span> <span data-ttu-id="bdcbc-121">Se você precisar trabalhar com uma propriedade em cada objeto da coleção, use uma instrução de carga hierárquica (`items/propertyName`).</span><span class="sxs-lookup"><span data-stu-id="bdcbc-121">If you need to work with a property on every object in the collection, use a hierarchal load statement (`items/propertyName`).</span></span>
+<span data-ttu-id="ca2dd-118">Muitos objetos do Excel estão contidos em uma coleção.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-118">Many Excel objects are contained in a collection.</span></span> <span data-ttu-id="ca2dd-119">A coleção é gerenciada pela API de scripts do Office e exposta como uma matriz.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-119">The collection is managed by the Office Scripts API and exposed as an array.</span></span> <span data-ttu-id="ca2dd-120">Por exemplo, todas as [formas](/javascript/api/office-scripts/excel/excelscript.shape) em uma planilha estão contidas em um `Shape[]` que é retornado pelo `Worksheet.getShapes` método.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-120">For example, all [Shapes](/javascript/api/office-scripts/excel/excelscript.shape) in a worksheet are contained in a `Shape[]` that is returned by the `Worksheet.getShapes` method.</span></span> <span data-ttu-id="ca2dd-121">Você pode usar essa matriz para ler valores da coleção ou pode acessar objetos específicos dos métodos do objeto pai `get*` .</span><span class="sxs-lookup"><span data-stu-id="ca2dd-121">You can use this array to read values from the collection, or you can access specific objects from the parent object's `get*` methods.</span></span>
 
-<span data-ttu-id="bdcbc-122">O script a seguir registra o tipo de todas as formas na planilha atual.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-122">The following script logs the type of every shape in the current worksheet.</span></span>
+> [!NOTE]
+> <span data-ttu-id="ca2dd-122">Não adicione nem remova manualmente objetos dessas matrizes de coleção.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-122">Do not manually add or remove objects from these collection arrays.</span></span> <span data-ttu-id="ca2dd-123">Use os `add` métodos nos objetos pai e os `delete` métodos nos objetos do tipo coleção.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-123">Use the `add` methods on the parent objects and the `delete` methods on the collection-type objects.</span></span> <span data-ttu-id="ca2dd-124">Por exemplo, adicione uma [tabela](/javascript/api/office-scripts/excel/excelscript.table) a uma [planilha](/javascript/api/office-scripts/excel/excelscript.worksheet) com o `Worksheet.addTable` método e remova o `Table` usando `Table.delete` .</span><span class="sxs-lookup"><span data-stu-id="ca2dd-124">For example, add a [Table](/javascript/api/office-scripts/excel/excelscript.table) to a [Worksheet](/javascript/api/office-scripts/excel/excelscript.worksheet) with the `Worksheet.addTable` method and remove the `Table` using `Table.delete`.</span></span>
+
+<span data-ttu-id="ca2dd-125">O script a seguir registra o tipo de todas as formas na planilha atual.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-125">The following script logs the type of every shape in the current worksheet.</span></span>
 
 ```TypeScript
-async function main(context: Excel.RequestContext) {
+function main(workbook: ExcelScript.Workbook) {
   // Get the current worksheet.
-  let selectedSheet = context.workbook.worksheets.getActiveWorksheet();
+  let selectedSheet = workbook.getActiveWorksheet();
 
   // Get the shapes in this worksheet.
-  let shapes = selectedSheet.shapes;
-  shapes.load("items/type");
-  await context.sync();
+  let shapes = selectedSheet.getShapes();
 
   // Log the type of every shape in the collection.
-  shapes.items.forEach((shape) => {
-    console.log(shape.type);
+  shapes.forEach((shape) => {
+    console.log(shape.getType());
   });
 }
 ```
 
-<span data-ttu-id="bdcbc-123">Você pode carregar objetos individuais de uma coleção usando os `getItem` métodos `getItemAt` ou.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-123">You can load individual objects from a collection using the `getItem` or `getItemAt` methods.</span></span> <span data-ttu-id="bdcbc-124">`getItem`Obtém um objeto usando um identificador exclusivo como um nome (esses nomes geralmente são especificados pelo script).</span><span class="sxs-lookup"><span data-stu-id="bdcbc-124">`getItem` gets an object by using a unique identifier like a name (such names are often specified by your script).</span></span> <span data-ttu-id="bdcbc-125">`getItemAt`Obtém um objeto usando seu índice na coleção.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-125">`getItemAt` gets an object by using its index in the collection.</span></span> <span data-ttu-id="bdcbc-126">Qualquer uma das chamadas deve ser seguida `await context.sync();` por um comando para que o objeto possa ser usado.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-126">Either call must be followed by a `await context.sync();` command before the object can be used.</span></span>
-
-<span data-ttu-id="bdcbc-127">O script a seguir exclui a forma mais antiga na planilha atual.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-127">The following script deletes the oldest shape in the current worksheet.</span></span>
+<span data-ttu-id="ca2dd-126">O script a seguir exclui a forma mais antiga na planilha atual.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-126">The following script deletes the oldest shape in the current worksheet.</span></span>
 
 ```Typescript
-async function main(context: Excel.RequestContext) {
+function main(workbook: ExcelScript.Workbook) {
   // Get the current worksheet.
-  let selectedSheet = context.workbook.worksheets.getActiveWorksheet();
+  let selectedSheet = workbook.getActiveWorksheet();
 
   // Get the first (oldest) shape in the worksheet.
   // Note that this script will thrown an error if there are no shapes.
-  let shape = selectedSheet.shapes.getItemAt(0);
-
-  // Sync to load `shape` from the collection.
-  await context.sync();
+  let shape = selectedSheet.getShapes()[0];
 
   // Remove the shape from the worksheet.
   shape.delete();
 }
 ```
 
-## <a name="date"></a><span data-ttu-id="bdcbc-128">Data</span><span class="sxs-lookup"><span data-stu-id="bdcbc-128">Date</span></span>
+## <a name="date"></a><span data-ttu-id="ca2dd-127">Data</span><span class="sxs-lookup"><span data-stu-id="ca2dd-127">Date</span></span>
 
-<span data-ttu-id="bdcbc-129">O objeto [Date](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) fornece uma maneira padronizada para trabalhar com datas no seu script.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-129">The [Date](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) object provides a standardized way to work with dates in your script.</span></span> <span data-ttu-id="bdcbc-130">`Date.now()`gera um objeto com data e hora atuais, o que é útil ao adicionar carimbos de data/hora à entrada de dados do script.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-130">`Date.now()` generates an object with the current date and time, which is useful when adding timestamps to your script's data entry.</span></span>
+<span data-ttu-id="ca2dd-128">O objeto [Date](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) fornece uma maneira padronizada para trabalhar com datas no seu script.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-128">The [Date](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date) object provides a standardized way to work with dates in your script.</span></span> <span data-ttu-id="ca2dd-129">`Date.now()`gera um objeto com data e hora atuais, o que é útil ao adicionar carimbos de data/hora à entrada de dados do script.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-129">`Date.now()` generates an object with the current date and time, which is useful when adding timestamps to your script's data entry.</span></span>
 
-<span data-ttu-id="bdcbc-131">O script a seguir adiciona a data atual à planilha.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-131">The following script adds the current date to the worksheet.</span></span> <span data-ttu-id="bdcbc-132">Observe que, usando o `toLocaleDateString` método, o Excel reconhece o valor como uma data e altera automaticamente o formato de número da célula.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-132">Note that by using the `toLocaleDateString` method, Excel recognizes the value as a date and changes the number format of the cell automatically.</span></span>
+<span data-ttu-id="ca2dd-130">O script a seguir adiciona a data atual à planilha.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-130">The following script adds the current date to the worksheet.</span></span> <span data-ttu-id="ca2dd-131">Observe que, usando o `toLocaleDateString` método, o Excel reconhece o valor como uma data e altera automaticamente o formato de número da célula.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-131">Note that by using the `toLocaleDateString` method, Excel recognizes the value as a date and changes the number format of the cell automatically.</span></span>
 
 ```TypeScript
-async function main(context: Excel.RequestContext) {
+function main(workbook: ExcelScript.Workbook) {
   // Get the range for cell A1.
-  let range = context.workbook.worksheets.getActiveWorksheet().getRange("A1");
+  let range = workbook.getActiveWorksheet().getRange("A1");
 
   // Get the current date and time.
   let date = new Date(Date.now());
 
   // Set the value at A1 to the current date, using a localized string.
-  range.values = [[date.toLocaleDateString()]];
+  range.setValue(date.toLocaleDateString());
 }
 ```
 
-<span data-ttu-id="bdcbc-133">A seção [trabalhar com datas](../resources/excel-samples.md#work-with-dates) dos exemplos tem mais scripts relacionados a datas.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-133">The [Work with dates](../resources/excel-samples.md#work-with-dates) section of the samples has more Date-related scripts.</span></span>
+<span data-ttu-id="ca2dd-132">A seção [trabalhar com datas](../resources/excel-samples.md#work-with-dates) dos exemplos tem mais scripts relacionados a datas.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-132">The [Work with dates](../resources/excel-samples.md#work-with-dates) section of the samples has more Date-related scripts.</span></span>
 
-## <a name="math"></a><span data-ttu-id="bdcbc-134">Matemática</span><span class="sxs-lookup"><span data-stu-id="bdcbc-134">Math</span></span>
+## <a name="math"></a><span data-ttu-id="ca2dd-133">Matemática</span><span class="sxs-lookup"><span data-stu-id="ca2dd-133">Math</span></span>
 
-<span data-ttu-id="bdcbc-135">O objeto [Math](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math) fornece métodos e constantes para operações matemáticas comuns.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-135">The [Math](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math) object provides methods and constants for common mathematical operations.</span></span> <span data-ttu-id="bdcbc-136">Eles fornecem muitas funções também disponíveis no Excel, sem a necessidade de usar o mecanismo de cálculo da pasta de trabalho.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-136">These provide many functions also available in Excel, without the need to use the workbook's calculation engine.</span></span> <span data-ttu-id="bdcbc-137">Isso salva o script de ter que consultar a pasta de trabalho, o que melhora o desempenho.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-137">This saves your script from having to query the workbook, which improves performance.</span></span>
+<span data-ttu-id="ca2dd-134">O objeto [Math](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math) fornece métodos e constantes para operações matemáticas comuns.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-134">The [Math](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math) object provides methods and constants for common mathematical operations.</span></span> <span data-ttu-id="ca2dd-135">Eles fornecem muitas funções também disponíveis no Excel, sem a necessidade de usar o mecanismo de cálculo da pasta de trabalho.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-135">These provide many functions also available in Excel, without the need to use the workbook's calculation engine.</span></span> <span data-ttu-id="ca2dd-136">Isso salva o script de ter que consultar a pasta de trabalho, o que melhora o desempenho.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-136">This saves your script from having to query the workbook, which improves performance.</span></span>
 
-<span data-ttu-id="bdcbc-138">O script a seguir `Math.min` usa para localizar e registrar o menor número no intervalo **a1: D4** .</span><span class="sxs-lookup"><span data-stu-id="bdcbc-138">The following script uses `Math.min` to find and log the smallest number in the **A1:D4** range.</span></span> <span data-ttu-id="bdcbc-139">Observe que este exemplo pressupõe que o intervalo inteiro contenha apenas números, e não cadeias de caracteres.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-139">Note that this sample assumes the entire range contains only numbers, not strings.</span></span>
+<span data-ttu-id="ca2dd-137">O script a seguir usa `Math.min` para localizar e registrar o menor número no intervalo **a1: D4** .</span><span class="sxs-lookup"><span data-stu-id="ca2dd-137">The following script uses `Math.min` to find and log the smallest number in the **A1:D4** range.</span></span> <span data-ttu-id="ca2dd-138">Observe que este exemplo pressupõe que o intervalo inteiro contenha apenas números, e não cadeias de caracteres.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-138">Note that this sample assumes the entire range contains only numbers, not strings.</span></span>
 
 ```TypeScript
-async function main(context: Excel.RequestContext) {
+function main(workbook: ExcelScript.Workbook) {
   // Get the range from A1 to D4.
-  let comparisonRange = context.workbook.worksheets.getActiveWorksheet().getRange("A1:D4");
-  
+  let comparisonRange = workbook.getActiveWorksheet().getRange("A1:D4");
+
   // Load the range's values.
-  comparisonRange.load("values");
-  await context.sync();
+  let comparisonRangeValues = comparisonRange.getValues();
 
   // Set the minimum values as the first value.
-  let minimum = comparisonRange.values[0][0];
+  let minimum = comparisonRangeValues[0][0];
 
   // Iterate over each row looking for the smallest value.
-  comparisonRange.values.forEach((rowItem, rowIndex) => {
+  comparisonRangeValues.forEach((rowItem, rowIndex) => {
     // Iterate over each column looking for the smallest value.
-    comparisonRange.values[rowIndex].forEach((columnItem) => {
+    comparisonRangeValues[rowIndex].forEach((columnItem) => {
       // Use `Math.min` to set the smallest value as either the current cell's value or the previous minimum.
       minimum = Math.min(minimum, columnItem);
     });
   });
-  
+
   console.log(minimum);
 }
 
 ```
 
-## <a name="use-of-external-javascript-libraries-is-not-supported"></a><span data-ttu-id="bdcbc-140">Não há suporte para o uso de bibliotecas JavaScript externas</span><span class="sxs-lookup"><span data-stu-id="bdcbc-140">Use of external JavaScript libraries is not supported</span></span>
+## <a name="use-of-external-javascript-libraries-is-not-supported"></a><span data-ttu-id="ca2dd-139">Não há suporte para o uso de bibliotecas JavaScript externas</span><span class="sxs-lookup"><span data-stu-id="ca2dd-139">Use of external JavaScript libraries is not supported</span></span>
 
-<span data-ttu-id="bdcbc-141">Os scripts do Office não oferecem suporte ao uso de bibliotecas externas de terceiros.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-141">Office Scripts don't support the use of external, third-party libraries.</span></span> <span data-ttu-id="bdcbc-142">O script só pode usar os objetos JavaScript internos e as APIs de scripts do Office.</span><span class="sxs-lookup"><span data-stu-id="bdcbc-142">Your script can only use the built-in JavaScript objects and the Office Scripts APIs.</span></span>
+<span data-ttu-id="ca2dd-140">Os scripts do Office não oferecem suporte ao uso de bibliotecas externas de terceiros.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-140">Office Scripts don't support the use of external, third-party libraries.</span></span> <span data-ttu-id="ca2dd-141">O script só pode usar os objetos JavaScript internos e as APIs de scripts do Office.</span><span class="sxs-lookup"><span data-stu-id="ca2dd-141">Your script can only use the built-in JavaScript objects and the Office Scripts APIs.</span></span>
 
-## <a name="see-also"></a><span data-ttu-id="bdcbc-143">Confira também</span><span class="sxs-lookup"><span data-stu-id="bdcbc-143">See also</span></span>
+## <a name="see-also"></a><span data-ttu-id="ca2dd-142">Confira também</span><span class="sxs-lookup"><span data-stu-id="ca2dd-142">See also</span></span>
 
-- [<span data-ttu-id="bdcbc-144">Objetos internos padrão</span><span class="sxs-lookup"><span data-stu-id="bdcbc-144">Standard built-in objects</span></span>](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)
-- [<span data-ttu-id="bdcbc-145">Ambiente do editor de código de scripts do Office</span><span class="sxs-lookup"><span data-stu-id="bdcbc-145">Office Scripts Code Editor environment</span></span>](../overview/code-editor-environment.md)
+- [<span data-ttu-id="ca2dd-143">Objetos internos padrão</span><span class="sxs-lookup"><span data-stu-id="ca2dd-143">Standard built-in objects</span></span>](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)
+- [<span data-ttu-id="ca2dd-144">Ambiente do editor de código de scripts do Office</span><span class="sxs-lookup"><span data-stu-id="ca2dd-144">Office Scripts Code Editor environment</span></span>](../overview/code-editor-environment.md)
