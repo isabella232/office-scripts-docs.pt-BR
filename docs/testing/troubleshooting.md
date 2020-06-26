@@ -1,16 +1,16 @@
 ---
-title: Solucionando problemas de scripts do Office
+title: Solução de problemas dos scripts do Office
 description: Dicas e técnicas de depuração para scripts do Office, bem como recursos da ajuda.
-ms.date: 12/13/2019
+ms.date: 05/14/2020
 localization_priority: Normal
-ms.openlocfilehash: 959faff875f342dc1b1ab158ad9ded24732b0894
-ms.sourcegitcommit: b075eed5a6f275274fbbf6d62633219eac416f26
+ms.openlocfilehash: 6448980eec45214a589444229db0fd781b9fea13
+ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "42700052"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "44878616"
 ---
-# <a name="troubleshooting-office-scripts"></a>Solucionando problemas de scripts do Office
+# <a name="troubleshooting-office-scripts"></a>Solução de problemas dos scripts do Office
 
 Ao desenvolver scripts do Office, você pode cometer erros. Não há problema. Temos ferramentas que ajudam a encontrar os problemas e a fazer com que seus scripts funcionem perfeitamente.
 
@@ -19,16 +19,11 @@ Ao desenvolver scripts do Office, você pode cometer erros. Não há problema. T
 Às vezes, durante a solução de problemas, convém imprimir mensagens na tela. Eles podem mostrar o valor atual de variáveis ou quais caminhos de código estão sendo disparados. Para fazer isso, faça o log do texto no console.
 
 ```TypeScript
-console.log("Logging my range's address.");
-myRange.load("address");
-await context.sync();
-console.log(myRange.address);
+console.log("Logging myRange's address.");
+console.log(myRange.getAddress());
 ```
 
-> [!IMPORTANT]
-> Não se `load` esqueça dos dados da `sync` planilha e da pasta de trabalho antes de registrar as propriedades do objeto.
-
-As cadeias`console.log` de caracteres passadas para serão exibidas no console de registro em log do editor de código. Para ativar o console, pressione o botão **reticências** e selecione **logs...**
+As cadeias de caracteres passadas para `console.log` serão exibidas no console de registro em log do editor de código. Para ativar o console, pressione o botão **reticências** e selecione **logs...**
 
 Os logs não afetam a pasta de trabalho.
 
@@ -49,3 +44,4 @@ Se houver um problema com o gravador de ação ou editor, envie comentários atr
 - [Scripts do Office no Excel na Web](../overview/excel.md)
 - [Conceitos básicos de script para scripts do Office no Excel na Web](../develop/scripting-fundamentals.md)
 - [Desfazer os efeitos de um script do Office](undo.md)
+- [Melhorar o desempenho dos scripts do Office](../develop/web-client-performance.md)

@@ -1,14 +1,14 @@
 ---
 title: Ambiente do editor de código de scripts do Office
 description: Os pré-requisitos e as informações de ambiente para scripts do Office no Excel na Web.
-ms.date: 04/08/2020
+ms.date: 04/24/2020
 localization_priority: Normal
-ms.openlocfilehash: 6b26adf886172f085980bed0488b4aa7a6815991
-ms.sourcegitcommit: b13dedb5ee2048f0a244aa2294bf2c38697cb62c
+ms.openlocfilehash: efe6ddbe39a1ea3850b4dc6fea0fa885b80c0c28
+ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "43215263"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "44878665"
 ---
 # <a name="office-scripts-code-editor-environment"></a>Ambiente do editor de código de scripts do Office
 
@@ -25,7 +25,7 @@ Os scripts do Office são partes de código amplamente contidas. Apenas uma pequ
 
 ## <a name="office-scripts-javascript-api"></a>API JavaScript de scripts do Office
 
-Os scripts do Office usam uma versão especializada das APIs JavaScript do Office usadas por [suplementos do Office](/office/dev/add-ins/overview/index). As diferenças entre as duas plataformas são descritas no artigo [diferenças entre scripts do Office e suplementos do Office](../resources/add-ins-differences.md#apis) . Você pode exibir todas as APIs disponíveis para o seu script na [documentação de referência da API de scripts do Office](/javascript/api/office-scripts/overview).
+Os scripts do Office usam uma versão especializada das APIs JavaScript do Office para [suplementos do Office](/office/dev/add-ins/overview/index). Embora haja semelhanças nas duas APIs, você não deve presumir que o código pode ser portado entre as duas plataformas. As diferenças entre as duas plataformas são descritas no artigo [diferenças entre scripts do Office e suplementos do Office](../resources/add-ins-differences.md#apis) . Você pode exibir todas as APIs disponíveis para o seu script na [documentação de referência da API de scripts do Office](/javascript/api/office-scripts/overview).
 
 ## <a name="intellisense"></a>Eventual
 

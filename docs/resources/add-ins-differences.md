@@ -1,18 +1,18 @@
 ---
-title: Diferenças entre scripts do Office e suplementos do Office
+title: Diferenças entre os scripts do Office e os suplementos do Office
 description: As diferenças de comportamento e API entre scripts do Office e suplementos do Office.
-ms.date: 03/23/2020
+ms.date: 06/01/2020
 localization_priority: Normal
-ms.openlocfilehash: 2290d4e34b7a7286d67443de9e9c64bad4fcd4b7
-ms.sourcegitcommit: d556aaefac80e55f53ac56b7f6ecbc657ebd426f
+ms.openlocfilehash: fc2029780190672c633e00e26f44273e4311c754
+ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "42978696"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "44878658"
 ---
-# <a name="differences-between-office-scripts-and-office-add-ins"></a>Diferenças entre scripts do Office e suplementos do Office
+# <a name="differences-between-office-scripts-and-office-add-ins"></a>Diferenças entre os scripts do Office e os suplementos do Office
 
-Os suplementos do Office e os scripts do Office têm muito em comum. Ambas oferecem controle automatizado de uma pasta de trabalho do `Excel` Excel por meio do namespace da API JavaScript do Office. No entanto, os scripts do Office são mais limitados em seu escopo.
+Os suplementos do Office e os scripts do Office têm muito em comum. Ambas oferecem controle automatizado de uma pasta de trabalho do Excel uma API JavaScript. No entanto, as APIs de scripts do Office são uma versão especializada e síncrona da API JavaScript do Office.
 
 ![Um diagrama de quatro quadrantes mostrando as áreas de foco para diferentes soluções de extensibilidade do Office. Os scripts do Office e os suplementos Web do Office são focados na Web e na colaboração, mas os scripts do Office atendem aos usuários finais (enquanto os desenvolvedores profissionais de destino dos Web suplementos do Office).)](../images/office-programmability-diagram.png)
 
@@ -28,7 +28,9 @@ Atualmente, os scripts do Office só têm suporte no Excel na Web. Toda gravaç�
 
 ## <a name="apis"></a>APIs
 
-Os scripts do Office oferecem suporte à maioria das APIs JavaScript do Excel, o que significa que há muita sobreposição de funcionalidade entre as duas plataformas. Há duas exceções: eventos e APIs comuns.
+Não há versão síncrona das APIs JavaScript do Office para suplementos do Office. As APIs de scripts padrão do Office são exclusivas da plataforma e têm várias otimizações e alterações para evitar o uso do `load` / `sync` paradigma.
+
+Algumas das [APIs JavaScript do Excel](/javascript/api/excel?view=excel-js-preview) são compatíveis com as [APIs assíncronas de scripts do Office](../develop/excel-async-model.md). Alguns exemplos de blocos de código de suplemento podem ser portados para `Excel.run` blocos com tradução mínima. Enquanto as duas plataformas compartilham a funcionalidade, há intervalos. Os dois conjuntos de API principal que os suplementos do Office têm, mas os scripts do Office não são eventos e as APIs comuns.
 
 ### <a name="events"></a>Eventos
 
