@@ -1,14 +1,14 @@
 ---
 title: 'Cenário de exemplo de scripts do Office: analisar downloads da Web'
 description: Um exemplo que obtém dados brutos de tráfego da Internet em uma pasta de trabalho do Excel e determina o local de origem, antes de organizá-las em uma tabela.
-ms.date: 06/15/2020
+ms.date: 06/25/2020
 localization_priority: Normal
-ms.openlocfilehash: 2a74fada55115faf79f0b625b8a7cd6352deb651
-ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
+ms.openlocfilehash: 425d2af432d6b3c4b7604daf7935d2cc1ec059a8
+ms.sourcegitcommit: 30750c4392db3ef057075a5702abb92863c93eda
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "44878644"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "44999264"
 ---
 # <a name="office-scripts-sample-scenario-analyze-web-downloads"></a>Cenário de exemplo de scripts do Office: analisar downloads da Web
 
@@ -30,6 +30,9 @@ Você desenvolverá um script que analisa dados de downloads semanais na planilh
 Este exemplo foi demonstrado como parte da chamada da comunidade de desenvolvedores dos suplementos do Office para fevereiro de 2020.
 
 > [!VIDEO https://www.youtube.com/embed/vPEqbb7t6-Y?start=154]
+
+> [!NOTE]
+> O código mostrado neste vídeo usa um modelo de API mais antigo (as [APIs assíncronas scripts do Office](../../develop/excel-async-model.md)). O exemplo apresentado nesta página foi atualizado, mas o código parece um pouco diferente da gravação. As alterações não afetam o comportamento do script ou o outro conteúdo na demonstração do apresentador.
 
 ## <a name="setup-instructions"></a>Instruções de configuração
 

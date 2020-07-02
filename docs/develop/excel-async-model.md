@@ -1,14 +1,14 @@
 ---
 title: Usando as APIs assíncronas de scripts do Office para suportar scripts herdados
 description: Uma primer nas APIs assíncronas de scripts do Office e como usar o padrão Load/Sync para scripts herdados.
-ms.date: 06/22/2020
+ms.date: 06/29/2020
 localization_priority: Normal
-ms.openlocfilehash: c7b3c1401ecc2b4d0371590e71f61ae6e9ad8a9d
-ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
+ms.openlocfilehash: 78a09232060d862a4e0944356ba2f33f7a264ea1
+ms.sourcegitcommit: 30750c4392db3ef057075a5702abb92863c93eda
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "44878704"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "44999272"
 ---
 # <a name="using-the-office-scripts-async-apis-to-support-legacy-scripts"></a>Usando as APIs assíncronas de scripts do Office para suportar scripts herdados
 
@@ -37,7 +37,7 @@ O objeto `context` é necessário porque o script e o Excel estão sendo executa
 
 Como o seu script e a pasta de trabalho são executados em locais diferentes, qualquer transferência de dados entre os dois levará algum tempo. Na API Async, os comandos são enfileirados até que o script chame explicitamente a `sync` operação para sincronizar o script e a pasta de trabalho. Seu script pode trabalhar de forma independente até que precise executar uma das seguintes ações:
 
-- Leia os dados da pasta de trabalho (seguindo uma `load` operação ou método que retorne um [ClientResult](/javascript/api/office-scripts/excel/excel.clientresult?view=office-scripts-async)).
+- Leia os dados da pasta de trabalho (seguindo uma `load` operação ou método que retorne um [ClientResult](/javascript/api/office-scripts/excelscript/excel.clientresult?view=office-scripts-async)).
 - Gravar dados na pasta de trabalho (geralmente porque o script terminou).
 
 A imagem a seguir mostra um exemplo de fluxo de controle entre o script e a pasta de trabalho:
