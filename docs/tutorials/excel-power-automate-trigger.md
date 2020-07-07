@@ -1,14 +1,13 @@
 ---
-title: Executar scripts automaticamente com a automatização de energia
-description: Tutorial sobre como integrar a automatização de energia com scripts do Office para Excel na Web usando gatilhos externos automáticos, como receber emails através do Outlook.
-ms.date: 06/09/2020
+title: Executar automaticamente scripts com Power Automate
+description: Tutorial sobre como executar scripts do Office para Excel na Web através da automatização de energia usando um gatilho externo automático (recebendo emails através do Outlook).
+ms.date: 06/29/2020
 localization_priority: Priority
-ms.openlocfilehash: 538a6533e4628a0f555d08eadda060a20830a7ae
-ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
-ms.translationtype: MT
+ms.openlocfilehash: a750197d6b5ae770ad7d2e17b3ee00dc65ee8875
+ms.sourcegitcommit: bf9f33c37c6f7805d6b408aa648bb9785a7cd133
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "44878701"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "45043416"
 ---
 # <a name="automatically-run-scripts-with-power-automate-preview"></a>Executar scripts automaticamente com a automatização de energia (prévia)
 
@@ -263,6 +262,6 @@ Quando o fluxo é acionado e executa o script com êxito, você deve ver a tabel
 
 ## <a name="next-steps"></a>Próximas etapas
 
-Visite [integrar scripts do Office com a automatização de energia](../develop/power-automate-integration.md) para saber mais sobre como conectar scripts do Office com automatização de energia.
+Visite [executar scripts do Office com a automatização de energia](../develop/power-automate-integration.md) para saber mais sobre como conectar scripts do Office com automatização de energia.
 
 Você também pode conferir o [cenário de exemplo de lembretes automáticos de tarefas](../resources/scenarios/task-reminders.md) para saber como combinar scripts do Office e automatizar a automação com cartões adaptáveis do teams.

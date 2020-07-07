@@ -3,12 +3,11 @@ title: Usando as APIs assíncronas de scripts do Office para suportar scripts he
 description: Uma primer nas APIs assíncronas de scripts do Office e como usar o padrão Load/Sync para scripts herdados.
 ms.date: 06/29/2020
 localization_priority: Normal
-ms.openlocfilehash: 78a09232060d862a4e0944356ba2f33f7a264ea1
-ms.sourcegitcommit: 30750c4392db3ef057075a5702abb92863c93eda
-ms.translationtype: MT
+ms.openlocfilehash: 6c31a39c8e1fe53f2f5587183a6b32e100d2b457
+ms.sourcegitcommit: bf9f33c37c6f7805d6b408aa648bb9785a7cd133
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "44999272"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "45043395"
 ---
 # <a name="using-the-office-scripts-async-apis-to-support-legacy-scripts"></a>Usando as APIs assíncronas de scripts do Office para suportar scripts herdados
 
@@ -37,7 +36,7 @@ O objeto `context` é necessário porque o script e o Excel estão sendo executa
 
 Como o seu script e a pasta de trabalho são executados em locais diferentes, qualquer transferência de dados entre os dois levará algum tempo. Na API Async, os comandos são enfileirados até que o script chame explicitamente a `sync` operação para sincronizar o script e a pasta de trabalho. Seu script pode trabalhar de forma independente até que precise executar uma das seguintes ações:
 
-- Leia os dados da pasta de trabalho (seguindo uma `load` operação ou método que retorne um [ClientResult](/javascript/api/office-scripts/excelscript/excel.clientresult?view=office-scripts-async)).
+- Leia os dados da pasta de trabalho (seguindo uma `load` operação ou método que retorne um [ClientResult](/javascript/api/office-scripts/excelscript/excelscript.clientresult?view=office-scripts-async)).
 - Gravar dados na pasta de trabalho (geralmente porque o script terminou).
 
 A imagem a seguir mostra um exemplo de fluxo de controle entre o script e a pasta de trabalho:
@@ -116,7 +115,7 @@ async function main(context: Excel.RequestContext){
 
 ### <a name="clientresult"></a>ClientResult
 
-Os métodos na API Async que retornam informações da pasta de trabalho têm um padrão semelhante ao `load` / `sync` paradigma. Por exemplo, `TableCollection.getCount` obtém o número de tabelas da coleção. `getCount` retorna um `ClientResult<number>`, o que significa que a `value` propriedade no retorno `ClientResult` é um número. Seu script não pode acessar esse valor até que `context.sync()` seja chamado. Assim como carregar uma propriedade, o `value` é um valor local "vazio" até a `sync` chamada.
+Os métodos na API Async que retornam informações da pasta de trabalho têm um padrão semelhante ao `load` / `sync` paradigma. Por exemplo, `TableCollection.getCount` obtém o número de tabelas da coleção. `getCount`Retorna um `ClientResult<number>` , significando que a `value` propriedade no retornado [`ClientResult`](/javascript/api/office-scripts/excelscript/excelscript.clientresult?view=office-scripts-async) é um número. Seu script não pode acessar esse valor até que `context.sync()` seja chamado. Assim como carregar uma propriedade, o `value` é um valor local "vazio" até a `sync` chamada.
 
 O script a seguir obtém o número total de tabelas na pasta de trabalho e registra esse número no console.
 

@@ -1,14 +1,13 @@
 ---
-title: Começar a usar scripts com a automatização de energia
-description: Tutorial sobre como integrar a automatização de energia com scripts do Office usando um gatilho manual.
-ms.date: 06/09/2020
+title: Começar a usar scripts com Power Automate
+description: Um tutorial sobre como usar scripts do Office em energia automatizada através de um gatilho manual.
+ms.date: 06/29/2020
 localization_priority: Priority
-ms.openlocfilehash: 37c2d9ae4c5456a1355362c70695fc61c236a725
-ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
-ms.translationtype: MT
+ms.openlocfilehash: b2a10692929de90506f58851e9322afa63e15ca0
+ms.sourcegitcommit: bf9f33c37c6f7805d6b408aa648bb9785a7cd133
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "44878710"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "45043409"
 ---
 # <a name="start-using-scripts-with-power-automate-preview"></a>Começar a usar scripts com a automatização de energia (visualização)
 
