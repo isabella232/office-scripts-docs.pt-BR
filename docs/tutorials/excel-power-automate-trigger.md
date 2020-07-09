@@ -1,15 +1,16 @@
 ---
-title: Executar automaticamente scripts com Power Automate
+title: Executar scripts automaticamente com fluxos automáticos automatizados
 description: Tutorial sobre como executar scripts do Office para Excel na Web através da automatização de energia usando um gatilho externo automático (recebendo emails através do Outlook).
-ms.date: 06/29/2020
+ms.date: 07/01/2020
 localization_priority: Priority
-ms.openlocfilehash: a750197d6b5ae770ad7d2e17b3ee00dc65ee8875
-ms.sourcegitcommit: bf9f33c37c6f7805d6b408aa648bb9785a7cd133
+ms.openlocfilehash: fc98fb36fd5a8c5ef10bc3b767d6f5add0306246
+ms.sourcegitcommit: edf58aed3cd38f57e5e7227465a1ef5515e15703
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "45043416"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "45081625"
 ---
-# <a name="automatically-run-scripts-with-power-automate-preview"></a>Executar scripts automaticamente com a automatização de energia (prévia)
+# <a name="automatically-run-scripts-with-automated-power-automate-flows-preview"></a>Executar scripts automaticamente com fluxos automáticos automatizados (visualização)
 
 Este tutorial ensina como usar um script do Office para Excel na Web com [um fluxo de trabalho automatizado](https://flow.microsoft.com) automático. O script será executado automaticamente cada vez que você receber um email, gravando informações do email em uma pasta de trabalho do Excel.
 

@@ -1,13 +1,14 @@
 ---
 title: Começar a usar scripts com Power Automate
 description: Um tutorial sobre como usar scripts do Office em energia automatizada através de um gatilho manual.
-ms.date: 06/29/2020
+ms.date: 07/01/2020
 localization_priority: Priority
-ms.openlocfilehash: b2a10692929de90506f58851e9322afa63e15ca0
-ms.sourcegitcommit: bf9f33c37c6f7805d6b408aa648bb9785a7cd133
+ms.openlocfilehash: 83e072a45fc724ff2aac5bf5f3893dcb64eaf2ff
+ms.sourcegitcommit: edf58aed3cd38f57e5e7227465a1ef5515e15703
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "45043409"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "45081632"
 ---
 # <a name="start-using-scripts-with-power-automate-preview"></a>Começar a usar scripts com a automatização de energia (visualização)
 
@@ -123,4 +124,4 @@ Agora, o fluxo está pronto para ser executado através da automatização de en
 
 ## <a name="next-steps"></a>Próximas etapas
 
-Preencha os [scripts executados automaticamente com o tutorial automatizar de energia](excel-power-automate-trigger.md) . Ele ensina como transmitir dados de um serviço de fluxo de trabalho para o script do Office.
+Preencha os [scripts executados automaticamente com o tutorial automatizar fluxos de energia automatizada](excel-power-automate-trigger.md) . Ele ensina como transmitir dados de um serviço de fluxo de trabalho para o script do Office.
