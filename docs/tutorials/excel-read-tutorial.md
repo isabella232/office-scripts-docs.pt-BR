@@ -1,14 +1,14 @@
 ---
 title: Ler os dados da pasta de trabalho com scripts do Office no Excel na Web.
 description: Um tutorial de scripts do Office sobre a leitura de dados de pastas de trabalho e avaliação desses dados no script.
-ms.date: 01/27/2020
+ms.date: 04/23/2020
 localization_priority: Priority
-ms.openlocfilehash: 42ed0fe5843a78692f9660b873211e3668702164
-ms.sourcegitcommit: b075eed5a6f275274fbbf6d62633219eac416f26
+ms.openlocfilehash: 93204184d4b5947b2a67107b1fd73c178a73c32e
+ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "42700041"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "44878680"
 ---
 # <a name="read-workbook-data-with-office-scripts-in-excel-on-the-web"></a>Ler os dados da pasta de trabalho com scripts do Office no Excel na Web.
 
@@ -19,12 +19,7 @@ Esse tutorial ensina a ler dados de uma pasta de trabalho com scripts do Office 
 
 ## <a name="prerequisites"></a>Pré-requisitos
 
-[!INCLUDE [Preview note](../includes/preview-note.md)]
-
-Antes de iniciar este tutorial, você precisará acessar os scripts do Office, que exigem o seguinte:
-
-- [Excel na Web](https://www.office.com/launch/excel).
-- Peça para o administrador [habilitar os scripts do Office da sua organização](https://support.office.com/article/office-scripts-settings-in-m365-19d3c51a-6ca2-40ab-978d-60fa49554dcf), o que adiciona a guia **Automação** à faixa de opções.
+[!INCLUDE [Tutorial prerequisites](../includes/tutorial-prerequisites.md)]
 
 > [!IMPORTANT]
 > Este tutorial é destinado a pessoas com conhecimento básico ou de nível intermediário de JavaScript ou TypeScript. Se você não conhece o JavaScript, recomendamos que revise o [tutorial do Mozilla JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Introduction). Visite [Scripts do Office no Excel na Web](../overview/excel.md) para saber mais sobre o ambiente de scripts.
@@ -56,33 +51,25 @@ No resto do tutorial, normalizaremos os dados usando um script. Primeiro, vamos 
     Substitua o conteúdo do script pelo código a seguir:
 
     ```TypeScript
-    async function main(context: Excel.RequestContext) {
-      // Get the current worksheet.
-      let workbook = context.workbook;
-      let worksheets = workbook.worksheets;
-      let selectedSheet = worksheets.getActiveWorksheet();
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the current worksheet.
+        let selectedSheet = workbook.getActiveWorksheet();
 
-      // Format the range to display numerical dollar amounts.
-      selectedSheet.getRange("D2:E8").numberFormat = [["$#,##0.00"]];
+        // Format the range to display numerical dollar amounts.
+        selectedSheet.getRange("D2:E8").setNumberFormat("$#,##0.00");
 
-      // Fit the width of all the used columns to the data.
-      selectedSheet.getUsedRange().format.autofitColumns();
+        // Fit the width of all the used columns to the data.
+        selectedSheet.getUsedRange().getFormat().autofitColumns();
     }
     ```
 
-5. Agora, leremos um valor de uma das colunas de número. Adicione o seguinte código ao final do script:
+5. Agora, leremos um valor de uma das colunas de número. Adicione o seguinte código no final do script (antes do encerramento `}`):
 
     ```TypeScript
     // Get the value of cell D2.
     let range = selectedSheet.getRange("D2");
-    range.load("values");
-    await context.sync();
-  
-    // Print the value of D2.
-    console.log(range.values);
+    console.log(range.getValues());
     ```
-
-    Anote as chamadas para `load` e `sync`. Aprenda mais detalhes desses métodos em [Fundamentos de Scripts do Office no Excel na Web](../develop/scripting-fundamentals.md#sync-and-load). Por enquanto, solicite que os dados sejam lidos e sincronize seu script com a pasta de trabalho para lê-los.
 
 6. Execute o script.
 7. Abra o console. Vá para o menu **Reticências** e pressione **Logs...**.
@@ -99,10 +86,12 @@ Agora que podemos ler os dados, usaremos eles para modificar a pasta de trabalho
 1. Adicione o seguinte código ao final do script:
 
     ```TypeScript
-    // Run the `Math.abs` function with the value at D2 and apply that value back to D2.
-    let positiveValue = Math.abs(range.values[0][0]);
-    range.values = [[positiveValue]];
+        // Run the `Math.abs` function with the value at D2 and apply that value back to D2.
+    let positiveValue = Math.abs(range.getValue());
+    range.setValue(positiveValue);
     ```
+
+    Observe que estamos usando `getValue` e `setValue`. Esses métodos funcionam em uma única célula. Ao lidar com intervalos de várias células, use `getValues` e `setValues`.
 
 2. O valor da célula **D2** agora deverá ser positivo.
 
@@ -113,17 +102,15 @@ Agora que sabemos ler e escrever em uma única célula, vamos generalizar o scri
 1. Remova o código que afeta apenas uma única célula (o código de valor absoluto anterior), de modo que o script agora se pareça com este:
 
     ```TypeScript
-    async function main(context: Excel.RequestContext) {
-      // Get the current worksheet.
-      let workbook = context.workbook;
-      let worksheets = workbook.worksheets;
-      let selectedSheet = worksheets.getActiveWorksheet();
+    function main(workbook: ExcelScript.Workbook) {
+        // Get the current worksheet.
+        let selectedSheet = workbook.getActiveWorksheet();
 
-      // Format the range to display numerical dollar amounts.
-      selectedSheet.getRange("D2:E8").numberFormat = [["$#,##0.00"]];
+        // Format the range to display numerical dollar amounts.
+        selectedSheet.getRange("D2:E8").setNumberFormat("$#,##0.00");
 
-      // Fit the width of all the used columns to the data.
-      selectedSheet.getUsedRange().format.autofitColumns();
+        // Fit the width of all the used columns to the data.
+        selectedSheet.getUsedRange().getFormat().autofitColumns();
     }
     ```
 
@@ -134,26 +121,25 @@ Agora que sabemos ler e escrever em uma única célula, vamos generalizar o scri
     ```TypeScript
     // Get the values of the used range.
     let range = selectedSheet.getUsedRange();
-    range.load("rowCount,values");
-    await context.sync();
+    let rangeValues = range.getValues();
 
     // Iterate over the fourth and fifth columns and set their values to their absolute value.
-    for (let i = 1; i < range.rowCount; i++) {
-      // The column at index 3 is column "4" in the worksheet.
-      if (range.values[i][3] != 0) {
-        let positiveValue = Math.abs(range.values[i][3]);
-        selectedSheet.getCell(i, 3).values = [[positiveValue]];
-      }
+    for (let i = 1; i < range.getRowCount(); i++) {
+        // The column at index 3 is column "4" in the worksheet.
+        if (rangeValues[i][3] != 0) {
+            let positiveValue = Math.abs(rangeValues[i][3]);
+            selectedSheet.getCell(i, 3).setValue(positiveValue);
+        }
 
-      // The column at index 4 is column "5" in the worksheet.
-      if (range.values[i][4] != 0) {
-        let positiveValue = Math.abs(range.values[i][4]);
-        selectedSheet.getCell(i, 4).values = [[positiveValue]];
-      }
+        // The column at index 4 is column "5" in the worksheet.
+        if (rangeValues[i][4] != 0) {
+            let positiveValue = Math.abs(rangeValues[i][4]);
+            selectedSheet.getCell(i, 4).setValue(positiveValue);
+        }
     }
     ```
 
-    Essa parte do script faz várias tarefas importantes. Primeiro, ela carrega os valores e a contagem de linhas do intervalo usado. Isso nos permite ver os valores e saber quando parar. Segundo, ela reitera através do intervalo usado, verificando cada célula nas colunas **Débito** ou **Crédito**. Por fim, se o valor na célula não for 0, ele será substituído pelo valor absoluto. Estamos evitando zeros, para que possamos deixar as células em branco.
+    Essa parte do script faz várias tarefas importantes. Primeiro, ela obtém os valores e a contagem de linhas do intervalo usado. Isso nos permite ver os valores e saber quando parar. Segundo, ela reitera através do intervalo usado, verificando cada célula nas colunas **Débito** ou **Crédito**. Por fim, se o valor na célula não for 0, ele será substituído pelo valor absoluto. Estamos evitando zeros, para que possamos deixar as células em branco.
 
 3. Execute o script.
 
