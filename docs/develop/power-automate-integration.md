@@ -1,25 +1,24 @@
 ---
 title: Executar scripts do Office com automatização de energia
 description: Como obter scripts do Office para Excel na Web trabalhando com um fluxo de trabalho automatizado de energia.
-ms.date: 07/01/2020
+ms.date: 07/10/2020
 localization_priority: Normal
-ms.openlocfilehash: 40a67f3d0e8f049a8ec5516c0af54c5fc6fb9319
-ms.sourcegitcommit: edf58aed3cd38f57e5e7227465a1ef5515e15703
+ms.openlocfilehash: bd8fea08b7a9303ad2ceace787de6457a33fb979
+ms.sourcegitcommit: ebd1079c7e2695ac0e7e4c616f2439975e196875
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "45081590"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "45160443"
 ---
 # <a name="run-office-scripts-with-power-automate"></a>Executar scripts do Office com automatização de energia
 
-A [automatização de energia](https://flow.microsoft.com) permite que você adicione scripts do Office a um fluxo de trabalho maior e automatizado. Você pode usar a automatização de energia, como adicionar o conteúdo de um email à tabela de uma planilha ou criar ações em suas ferramentas de gerenciamento de projeto com base nos comentários da pasta de trabalho. Se você for novo para a automatização de energia, recomendamos [a visita de introdução à automatização de energia](/power-automate/getting-started). Lá, você pode saber mais sobre como automatizar seus fluxos de trabalho em vários serviços.
-
-> [!IMPORTANT]
-> No momento, não é possível executar scripts do Office a partir de um [fluxo compartilhado](/power-automate/share-buttons). Somente o usuário que criou um script pode executá-lo, mesmo através da automatização de energia.
+A [automatização de energia](https://flow.microsoft.com) permite que você adicione scripts do Office a um fluxo de trabalho maior e automatizado. Você pode usar a automatização de energia, como adicionar o conteúdo de um email à tabela de uma planilha ou criar ações em suas ferramentas de gerenciamento de projeto com base nos comentários da pasta de trabalho.
 
 ## <a name="getting-started"></a>Introdução
 
-Para começar a combinar os scripts do Office e automatizados de energia, siga o tutorial [começar a usar scripts com a automatização de energia](../tutorials/excel-power-automate-manual.md). Isso ensina como criar um fluxo que chama um script simples. Depois de concluir o tutorial e [executar automaticamente os scripts com o tutorial automatizar fluxos automáticos](../tutorials/excel-power-automate-trigger.md) , retorne aqui para obter informações detalhadas sobre como conectar scripts do Office para automatizar fluxos de energia.
+Se você for novo para a automatização de energia, recomendamos [a visita de introdução à automatização de energia](/power-automate/getting-started). Lá, você pode saber mais sobre todas as possibilidades de automação disponíveis para você. Os documentos aqui se concentram em como os scripts do Office trabalham com a automatização de energia e como isso pode ajudar a melhorar a experiência do Excel.
+
+Para começar a combinar os scripts do Office e automatizados de energia, siga o tutorial [começar a usar scripts com a automatização de energia](../tutorials/excel-power-automate-manual.md). Isso ensina como criar um fluxo que chama um script simples. Após concluir o tutorial e a passagem dos [dados para scripts em um tutorial de fluxo automático automatizado de energia automatizada](../tutorials/excel-power-automate-trigger.md) , retorne aqui para obter informações detalhadas sobre como conectar scripts do Office para automatizar fluxos de energia.
 
 ## <a name="excel-online-business-connector"></a>Conector do Excel online (comercial)
 
@@ -33,9 +32,9 @@ Os [conectores](/connectors/connectors) são as pontes entre automatização e a
 A automatização de energia permite que você passe dados entre as etapas do seu fluxo. Os scripts podem ser configurados para aceitar qualquer tipo de informação que você precisa e retornar qualquer coisa da sua pasta de trabalho que você deseja em seu fluxo. A entrada para o seu script é especificada adicionando parâmetros à `main` função (além de `workbook: ExcelScript.Workbook` ). A saída do script é declarada pela adição de um tipo de retorno a `main` .
 
 > [!NOTE]
-> Quando você cria um bloco de "script de execução" no fluxo, os parâmetros aceitos e os tipos retornados são preenchidos. Se você alterar os parâmetros ou retornar tipos de seu script, será necessário refazer o bloco "executar script" do seu fluxo. Isso garante que os dados estão sendo analisados corretamente.
+> Quando você cria um bloco de "script de execução" em seu fluxo, os parâmetros aceitos e os tipos retornados são preenchidos. Se você alterar os parâmetros ou retornar tipos de seu script, será necessário refazer o bloco "executar script" do seu fluxo. Isso garante que os dados estão sendo analisados corretamente.
 
-As seções a seguir abrangem os detalhes de entrada e saída para scripts usados na automatização de energia. Se você gostaria de obter uma abordagem prática para aprender este tópico, experimente o tutorial [executar automaticamente os scripts com](../tutorials/excel-power-automate-trigger.md) o modo de automatização automatizar fluxos ou explorar o cenário de exemplo de [lembretes automáticos de tarefas](../resources/scenarios/task-reminders.md) .
+As seções a seguir abrangem os detalhes de entrada e saída para scripts usados na automatização de energia. Se você gostaria de obter uma abordagem prática para aprender este tópico, experimente os dados de [passagem para scripts em um tutorial de fluxo automático automatizado de fluxo](../tutorials/excel-power-automate-trigger.md) automático ou explore o cenário de exemplo de [lembretes automáticos de tarefas](../resources/scenarios/task-reminders.md) .
 
 ### <a name="main-parameters-passing-data-to-a-script"></a>`main`Parâmetros: passagem de dados para um script
 
@@ -82,7 +81,7 @@ Ao adicionar parâmetros de entrada para a função de um script `main` , consid
 
 10. Os valores de parâmetro padrão são permitidos (por exemplo `async function main(workbook: ExcelScript.Workbook, Name: string = 'Jane Doe')` .
 
-## <a name="returning-data-from-a-script"></a>Retornar dados de um script
+### <a name="returning-data-from-a-script"></a>Retornar dados de um script
 
 Os scripts podem retornar dados da pasta de trabalho para serem usados como conteúdo dinâmico em um fluxo automatizado de energia. Como nos parâmetros de entrada, a automatização de energia coloca algumas restrições no tipo de retorno.
 
@@ -100,19 +99,19 @@ Os scripts podem retornar dados da pasta de trabalho para serem usados como cont
 
 A automatização de energia executa o script na pasta de trabalho do Excel escolhida em seu nome. A pasta de trabalho pode ser fechada quando isso acontecer. Qualquer API que se baseia no estado atual do usuário, como `Workbook.getActiveWorksheet` , falhará quando for executada através da automatização de energia. Ao projetar seus scripts, certifique-se de usar referências absolutas para planilhas e intervalos.
 
-As funções a seguir apresentarão um erro e falharão quando chamadas de um script em um fluxo automatizado de energia.
+Os métodos a seguir gerarão um erro e falharão quando chamados de um script em um fluxo automatizado de energia.
 
-- `Chart.activate`
-- `Range.select`
-- `Workbook.getActiveCell`
-- `Workbook.getActiveChart`
-- `Workbook.getActiveChartOrNullObject`
-- `Workbook.getActiveSlicer`
-- `Workbook.getActiveSlicerOrNullObject`
-- `Workbook.getActiveWorksheet`
-- `Workbook.getSelectedRange`
-- `Workbook.getSelectedRanges`
-- `Worksheet.activate`
+| Classe | Método |
+|--|--|
+| [Gráfico](/javascript/api/office-scripts/excelscript/excelscript.chart) | `activate` |
+| [Range](/javascript/api/office-scripts/excelscript/excelscript.range) | `select` |
+| [Pasta de trabalho](/javascript/api/office-scripts/excelscript/excelscript.workbook) | `getActiveCell` |
+| [Pasta de trabalho](/javascript/api/office-scripts/excelscript/excelscript.workbook) | `getActiveChart` |
+| [Pasta de trabalho](/javascript/api/office-scripts/excelscript/excelscript.workbook) | `getActiveSlicer` |
+| [Pasta de trabalho](/javascript/api/office-scripts/excelscript/excelscript.workbook) | `getActiveWorksheet` |
+| [Pasta de trabalho](/javascript/api/office-scripts/excelscript/excelscript.workbook) | `getSelectedRange` |
+| [Pasta de trabalho](/javascript/api/office-scripts/excelscript/excelscript.workbook) | `getSelectedRanges` |
+| [Planilha](/javascript/api/office-scripts/excelscript/excelscript.workbook) | `activate` |
 
 ## <a name="example"></a>Exemplo
 
@@ -144,7 +143,7 @@ function main(
 ## <a name="see-also"></a>Confira também
 
 - [Executar scripts do Office no Excel na Web com a automatização de energia](../tutorials/excel-power-automate-manual.md)
-- [Executar scripts automaticamente com fluxos automáticos automatizados](../tutorials/excel-power-automate-trigger.md)
+- [Transmitir dados para scripts em um fluxo automático de energia de execução automatizada](../tutorials/excel-power-automate-trigger.md)
 - [Fundamentos de script para scripts do Office no Excel na Web](scripting-fundamentals.md)
 - [Começar a usar o Power Automate](/power-automate/getting-started)
 - [Documentação de referência do conector do Excel online (Business)](/connectors/excelonlinebusiness/)

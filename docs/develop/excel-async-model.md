@@ -1,21 +1,21 @@
 ---
-title: Usando as APIs assíncronas de scripts do Office para suportar scripts herdados
-description: Uma primer nas APIs assíncronas de scripts do Office e como usar o padrão Load/Sync para scripts herdados.
-ms.date: 06/29/2020
+title: Suporte a scripts mais antigos do Office que usam as APIs assíncronas
+description: Uma primer nas APIs assíncronas de scripts do Office e como usar o padrão Load/Sync para scripts mais antigos.
+ms.date: 07/08/2020
 localization_priority: Normal
-ms.openlocfilehash: 6c31a39c8e1fe53f2f5587183a6b32e100d2b457
-ms.sourcegitcommit: bf9f33c37c6f7805d6b408aa648bb9785a7cd133
+ms.openlocfilehash: e7ca5b276cff0e3a38bffc2af1541c0051cf5490
+ms.sourcegitcommit: ebd1079c7e2695ac0e7e4c616f2439975e196875
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "45043395"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "45160457"
 ---
-# <a name="using-the-office-scripts-async-apis-to-support-legacy-scripts"></a>Usando as APIs assíncronas de scripts do Office para suportar scripts herdados
+# <a name="support-older-office-scripts-that-use-the-async-apis"></a>Suporte a scripts mais antigos do Office que usam as APIs assíncronas
 
-Este artigo ensina como escrever scripts usando as APIs herdadas, assíncronas. Essas APIs têm a mesma funcionalidade principal que as APIs de scripts síncronas padrão, mas exigem que seu script controle a sincronização de dados entre o script e a pasta de trabalho.
+Este artigo ensina como manter e atualizar scripts que usam as APIs assíncronas do modelo antigo. Essas APIs têm a mesma funcionalidade principal que as APIs de scripts síncronas padrão e agora, mas exigem que seu script controle a sincronização de dados entre o script e a pasta de trabalho.
 
 > [!IMPORTANT]
-> O modelo assíncrono só pode ser usado com scripts criados antes da implementação do modelo de [API](scripting-fundamentals.md?view=office-scripts)atual. Os scripts são bloqueados permanentemente para o modelo de API que têm na criação. Isso também significa que se você quiser converter um script herdado para o novo modelo, deverá usar um script de marca novo. Recomendamos que você atualize seus scripts antigos para o novo modelo ao fazer alterações, já que o modelo atual é mais fácil de usar. A [conversão de scripts assíncronos herdados para a seção modelo atual](#converting-legacy-async-scripts-to-the-current-model) tem conselhos sobre como fazer essa transição.
+> O modelo assíncrono só pode ser usado com scripts criados antes da implementação do modelo de [API](scripting-fundamentals.md?view=office-scripts)atual. Os scripts são bloqueados permanentemente para o modelo de API que têm na criação. Isso também significa que se você quiser converter um script antigo para o novo modelo, deverá criar um novo script de marca. Recomendamos que você atualize seus scripts antigos para o novo modelo ao fazer alterações, já que o modelo atual é mais fácil de usar. A seção [convertendo scripts assíncronos no modelo atual](#converting-async-scripts-to-the-current-model) tem conselhos sobre como fazer essa transição.
 
 ## <a name="main-function"></a>função `main`
 
@@ -55,7 +55,7 @@ await context.sync();
 > [!NOTE]
 > `context.sync()` é chamado implicitamente quando um script termina.
 
-Após a conclusão da operação `sync`, a pasta de trabalho será atualizada para refletir as operações de gravação especificados por esse script. Uma operação de gravação está definindo uma propriedade em um objeto do Excel (por exemplo, `range.format.fill.color = "red"`) ou chamando um método que altera uma propriedade (por exemplo, `range.format.autoFitColumns()`). A `sync` operação também lê todos os valores da pasta de trabalho que o script solicitou usando uma `load` operação ou um método que retorna a `ClientResult` (conforme discutido nas próximas seções).
+Após a conclusão da operação `sync`, a pasta de trabalho será atualizada para refletir as operações de gravação especificados por esse script. Uma operação de gravação está definindo qualquer propriedade em um objeto do Excel (por exemplo, `range.format.fill.color = "red"` ) ou chamando um método que altera uma propriedade (por exemplo, `range.format.autoFitColumns()` ). A `sync` operação também lê todos os valores da pasta de trabalho que o script solicitou usando uma `load` operação ou um método que retorna a `ClientResult` (conforme discutido nas próximas seções).
 
 A sincronização do seu script com a pasta de trabalho pode demorar, dependendo da sua rede. Minimize o número de `sync` chamadas para ajudar seu script a ser executado rapidamente. Caso contrário, as APIs assíncronas não serão mais rápidas as APIs síncronas padrão.
 
@@ -137,7 +137,7 @@ async function main(context: Excel.RequestContext) {
 }
 ```
 
-## <a name="converting-legacy-async-scripts-to-the-current-model"></a>Convertendo scripts assíncronos herdados para o modelo atual
+## <a name="converting-async-scripts-to-the-current-model"></a>Convertendo scripts assíncronos no modelo atual
 
 O modelo de API atual não `load` usa `sync` o, o ou um `RequestContext` . Isso torna os scripts muito mais fáceis de escrever e manter. O melhor recurso para conversão de scripts antigos é o [estouro de pilha](https://stackoverflow.com/questions/tagged/office-scripts). Lá, você pode pedir à Comunidade para obter ajuda com cenários específicos. As orientações a seguir devem ajudar a descrever as etapas gerais que você precisará tomar.
 
