@@ -1,0 +1,7 @@
+[!INCLUDE [Preview note](../includes/preview-note.md)]
+
+<span data-ttu-id="c6cc1-101">Antes de começar este tutorial, você precisará acessar os seguintes aplicativos:</span><span class="sxs-lookup"><span data-stu-id="c6cc1-101">Before starting this tutorial, you'll need access to the following applications:</span></span>
+
+- <span data-ttu-id="c6cc1-102">[Power Automate](/power-automate/organization-q-and-a).</span><span class="sxs-lookup"><span data-stu-id="c6cc1-102">[Power Automate](/power-automate/organization-q-and-a).</span></span>
+- <span data-ttu-id="c6cc1-103">[Excel na Web](https://www.office.com/launch/excel).</span><span class="sxs-lookup"><span data-stu-id="c6cc1-103">[Excel on the web](https://www.office.com/launch/excel).</span></span>
+  - <span data-ttu-id="c6cc1-104">Peça ao seu administrador para [habilitar os Scripts do Office na sua organização](https://support.office.com/article/office-scripts-settings-in-m365-19d3c51a-6ca2-40ab-978d-60fa49554dcf), o que irá adicionar a guia **Automatizar** à faixa de opções do Excel na web.</span><span class="sxs-lookup"><span data-stu-id="c6cc1-104">Ask your administrator to [enable Office Scripts for your organization](https://support.office.com/article/office-scripts-settings-in-m365-19d3c51a-6ca2-40ab-978d-60fa49554dcf), which adds the **Automate** tab to the ribbon in Excel on the web.</span></span>
