@@ -1,14 +1,14 @@
 ---
 title: Ler os dados da pasta de trabalho com scripts do Office no Excel na Web.
 description: Um tutorial de scripts do Office sobre a leitura de dados de pastas de trabalho e avaliação desses dados no script.
-ms.date: 04/23/2020
+ms.date: 07/10/2020
 localization_priority: Priority
-ms.openlocfilehash: 93204184d4b5947b2a67107b1fd73c178a73c32e
-ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
+ms.openlocfilehash: fef1df7cab70ccef67a12ee466af5a89803d0992
+ms.sourcegitcommit: ebd1079c7e2695ac0e7e4c616f2439975e196875
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "44878680"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "45160403"
 ---
 # <a name="read-workbook-data-with-office-scripts-in-excel-on-the-web"></a>Ler os dados da pasta de trabalho com scripts do Office no Excel na Web.
 
@@ -72,10 +72,9 @@ No resto do tutorial, normalizaremos os dados usando um script. Primeiro, vamos 
     ```
 
 6. Execute o script.
-7. Abra o console. Vá para o menu **Reticências** e pressione **Logs...**.
-8. Você deverá ver `[Array[1]]` no console. Isso não é um número porque os intervalos são matrizes bidimensionais de dados. Esse intervalo bidimensional está sendo registrado diretamente no console. Felizmente, o Editor de códigos permite visualizar o conteúdo da matriz.
-9. Quando uma matriz bidimensional é registrada no console, ela agrupa os valores de coluna em cada linha. Expanda o log de matriz pressionando o triângulo azul.
-10. Expanda o segundo nível da matriz, pressionando o triângulo azul exibido recentemente. Agora, você deverá ver isto:
+7. Você deverá ver `[Array[1]]` no console. Isso não é um número porque os intervalos são matrizes bidimensionais de dados. Esse intervalo bidimensional está sendo registrado diretamente no console. Felizmente, o Editor de Códigos permite visualizar o conteúdo da matriz.
+8. Quando uma matriz bidimensional é registrada no console, ela agrupa os valores de coluna em cada linha. Expanda o log de matriz pressionando o triângulo azul.
+9. Expanda o segundo nível da matriz, pressionando o triângulo azul exibido recentemente. Agora, você deverá ver isto:
 
     ![O log do console mostrando a saída "-20.05", aninhada sob duas matrizes.](../images/tutorial-4.png)
 
@@ -86,7 +85,7 @@ Agora que podemos ler os dados, usaremos eles para modificar a pasta de trabalho
 1. Adicione o seguinte código ao final do script:
 
     ```TypeScript
-        // Run the `Math.abs` function with the value at D2 and apply that value back to D2.
+    // Run the `Math.abs` function with the value at D2 and apply that value back to D2.
     let positiveValue = Math.abs(range.getValue());
     range.setValue(positiveValue);
     ```
@@ -124,7 +123,8 @@ Agora que sabemos ler e escrever em uma única célula, vamos generalizar o scri
     let rangeValues = range.getValues();
 
     // Iterate over the fourth and fifth columns and set their values to their absolute value.
-    for (let i = 1; i < range.getRowCount(); i++) {
+    let rowCount = range.getRowCount();
+    for (let i = 1; i < rowCount; i++) {
         // The column at index 3 is column "4" in the worksheet.
         if (rangeValues[i][3] != 0) {
             let positiveValue = Math.abs(rangeValues[i][3]);

@@ -1,14 +1,14 @@
 ---
 title: Fundamentos de script para scripts do Office no Excel na Web
 description: Informações sobre o modelo de objeto e outros fundamentos para saber mais antes de escrever scripts do Office.
-ms.date: 06/29/2020
+ms.date: 07/08/2020
 localization_priority: Priority
-ms.openlocfilehash: 9ea24f26052877bc70862c8a05321d588f409b11
-ms.sourcegitcommit: 30750c4392db3ef057075a5702abb92863c93eda
+ms.openlocfilehash: 6c02f4fb986e6a0ed1dd7afb099aaa1c9d1ea276
+ms.sourcegitcommit: ebd1079c7e2695ac0e7e4c616f2439975e196875
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "44999299"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "45160471"
 ---
 # <a name="scripting-fundamentals-for-office-scripts-in-excel-on-the-web-preview"></a>Fundamentos de script para scripts do Office no Excel na Web (visualização)
 
@@ -18,18 +18,18 @@ Este artigo apresentará os aspectos técnicos dos scripts do Office. Você sabe
 
 ## <a name="main-function"></a>função `main`
 
-Cada script do Office deve conter a função `main` com o tipo `ExcelScript.Workbook` como seu primeiro parâmetro. Quando a função é executada, o aplicativo Excel chama essa função `main` fornecendo a pasta de trabalho como seu primeiro parâmetro. Portanto, é importante não modificar a assinatura básica da função `main` depois de gravar o script ou criar um script a partir do editor de código.
+Cada Script do Office precisa incluir uma função `main` tendo o tipo de `ExcelScript.Workbook` como seu primeiro parâmetro. Quando a função é executada, o aplicativo Excel chama essa função `main` fornecendo a pasta de trabalho como seu primeiro parâmetro. Portanto, é importante não modificar a assinatura básica da função `main` depois de gravar o script ou criar um script a partir do editor de código.
 
 ```typescript
 function main(workbook: ExcelScript.Workbook) {
-// Your code goes here
+  // Your code goes here
 }
 ```
 
 O código dentro da função `main` é executado quando o script é executado. `main` pode chamar outras funções em seu script, mas o código que não estiver contido em uma função não será executado.
 
 > [!CAUTION]
-> Se sua função `main` se parece com `async function main(context: Excel.RequestContext)`, seu script está usando o modelo de API assíncrona herdada. Por favor, consulte [Usando as APIs Assíncronas dos Scripts do Office para oferecer suporte a scripts herdados](excel-async-model.md) para obter mais informações, incluindo como converter seu script antigo para o modelo de API atual.
+> Se sua função `main` se parece com `async function main(context: Excel.RequestContext)`, seu script está usando um modelo antigo de API assíncrona. Para obter mais informações (inclusive sobre como converter seu script para o modelo de API atual), confira o artigo [Suporte a Scripts do Office mais antigos que utilizam APIs Assíncronas](excel-async-model.md).
 
 ## <a name="object-model"></a>Modelo de objetos
 
@@ -60,9 +60,9 @@ function main(workbook: ExcelScript.Workbook) {
 
 ### <a name="ranges"></a>Intervalos
 
-Um intervalo é um grupo de células contíguas na pasta de trabalho. Normalmente, os scripts normalmente usam notação de estilo A1 (ex.: **B3** para a única célula na coluna **B** e linha **3** ou **C2:F4** para as células das colunas **C** a **F** e linhas **2** a **4**) para definir intervalos.
+Um intervalo é um grupo de células contíguas na pasta de trabalho. Os scripts costumam usar uma notação estilo A1 (por ex.: **B3** para a única célula na coluna **B** e linha **3** ou **C2:F4** para as células das colunas **C** a **F** e linhas **2** a **4**) para definir intervalos.
 
-Os intervalos têm três propriedades principais: valores, fórmulas e formato. Essas propriedades recebem ou definem os valores da célula, as fórmulas a serem avaliadas e a formatação visual das células. Eles são acessados através de `getValues`, `getFormulas` e `getFormat`. Valores e fórmulas podem ser alterados com `setValues` e `setFormulas`, enquanto o formato é um objeto `RangeFormat` que é composto por vários objetos menores que são definidos individualmente.
+Os intervalos têm três propriedades principais: valores, fórmulas e formato. Essas propriedades recebem ou definem os valores da célula, as fórmulas a serem avaliadas e a formatação visual das células. Eles são acessados através de `getValues`, `getFormulas` e `getFormat`. Os valores e fórmulas podem ser alterados com `setValues` e `setFormulas`, enquanto o formato é um objeto `RangeFormat` composto de vários objetos menores que são configurados individualmente.
 
 Os intervalo usam matrizes bidimensionais para gerenciar informações. Leia a [Trabalhando com intervalos da seção Usando objetos JavaScript incorporados nos Scripts do Office](javascript-objects.md#working-with-ranges) para obter mais informações sobre como lidar com essas matrizes na estrutura de Scripts do Office.
 
@@ -163,7 +163,7 @@ Executar este script na planilha com a tabela anterior cria o seguinte gráfico:
 
 ### <a name="collections-and-other-object-relations"></a>Coleções e outras relações de objeto
 
-Qualquer objeto filho pode ser acessado através do objeto pai. Por exemplo, você pode ler `Worksheets` do objeto `Workbook`. Haverá um método `get` relacionado na classe pai que (por exemplo, `Workbook.getWorksheets()` ou `Workbook.getWorksheet(name)`). Os métodos `get` singulares retornam um único objeto e requerem um ID ou nome para o objeto específico (como o nome de uma planilha). Os métodos `get` que são plurais retornam toda a coleção de objetos como uma matriz. Se a coleção estiver vazia, você obterá uma matriz vazia (`[]`).
+Qualquer objeto filho pode ser acessado através do objeto pai. Por exemplo, você pode ler `Worksheets` do objeto `Workbook`. Haverá um método `get` relacionado na classe mãe (por exemplo, `Workbook.getWorksheets()` ou `Workbook.getWorksheet(name)`). Os métodos `get` singulares retornam um único objeto e requerem um ID ou nome para o objeto específico (como o nome de uma planilha). Os métodos `get` que são plurais retornam toda a coleção de objetos como uma matriz. Se a coleção estiver vazia, você obterá uma matriz vazia (`[]`).
 
 Depois que a coleção é recuperada, você pode usar operações regulares de matriz, como obter seus `length` ou usar `for`, `for..of`, `while` loops para iteração ou métodos de matriz TypeScript como `map`, `forEach`. Você também pode acessar objetos individuais na coleção usando o valor do índice da matriz. Por exemplo, `workbook.getTables()[0]` retorna a primeira tabela da coleção. Leia a seção [Trabalhando com coleções de Usando objetos JavaScript nos Scripts do Office](javascript-objects.md#working-with-collections) para aprender mais sobre o uso da funcionalidade de matriz incorporada com a estrutura de Scripts do Office.
 
