@@ -10,9 +10,9 @@
           href: tutorials/excel-tutorial.md
         - name: Ler dados da pasta de trabalho com um script
           href: tutorials/excel-read-tutorial.md
-        - name: Começar a usar scripts com Power Automate
+        - name: Ligue scripts de um fluxo manual do Power Automate
           href: tutorials/excel-power-automate-manual.md
-        - name: Executar automaticamente scripts com Power Automate
+        - name: Passar dados para scripts numa execução automática do fluxo do Power Automate
           href: tutorials/excel-power-automate-trigger.md
     - name: Fundamentos de script
       href: develop/scripting-fundamentals.md
@@ -38,7 +38,7 @@
           href: develop/web-client-performance.md
         - name: Desfazer os efeitos de um script do Office
           href: testing/undo.md
-        - name: Usando o modelo Async (herdado)
+        - name: Suporte os Scripts do Office mais antigos
           href: develop/excel-async-model.md
     - name: Exemplos
       items:
