@@ -1,14 +1,14 @@
 ---
 title: 'Cenário de exemplo de scripts do Office: calculadora de série'
 description: Um exemplo que determina a porcentagem e as classificações de uma classe de alunos.
-ms.date: 06/01/2020
+ms.date: 07/24/2020
 localization_priority: Normal
-ms.openlocfilehash: 6f8e3db756c72cf1d0e2f774ccd819c041f0c42d
-ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
+ms.openlocfilehash: 4e488c6cc67bda9122b88c55070654632d9c7fa2
+ms.sourcegitcommit: ff7fde04ce5a66d8df06ed505951c8111e2e9833
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "44878637"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "46616735"
 ---
 # <a name="office-scripts-sample-scenario-grade-calculator"></a>Cenário de exemplo de scripts do Office: calculadora de série
 
@@ -132,8 +132,8 @@ Você desenvolverá um script que totaliza as notas para cada categoria de ponto
         setCellValueConditionalFormatting(
           grade,
           totalRange,
-          "#9C0006",
-          "#FFC7CE",
+          "#443300",
+          "#FFEE22",
           ExcelScript.ConditionalCellValueOperator.equalTo
         );
       })
@@ -178,7 +178,7 @@ Você desenvolverá um script que totaliza as notas para cada categoria de ponto
 
 ## <a name="running-the-script"></a>Executando o script
 
-Execute o script de **calculadora de nota** na planilha única. O script totaliza as notas e atribui a cada aluno uma letra de nota. Se qualquer nota individual tiver mais pontos do que a atribuição ou o teste for importante, a classificação transgressor será marcada como vermelho e o total não será calculado.
+Execute o script de **calculadora de nota** na planilha única. O script totaliza as notas e atribui a cada aluno uma letra de nota. Se qualquer nota individual tiver mais pontos do que a atribuição ou o teste for importante, a classificação transgressor será marcada como vermelho e o total não será calculado. Além disso, todas as notas ' A ' são realçadas em verde, enquanto as notas ' e ' F ' são realçadas em amarelo.
 
 ### <a name="before-running-the-script"></a>Antes de executar o script
 

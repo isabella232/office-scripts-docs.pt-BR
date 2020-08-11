@@ -1,5 +1,3 @@
-[!INCLUDE [Preview note](../includes/preview-note.md)]
-
 Antes de iniciar este tutorial, você precisará acessar os scripts do Office, que exigem o seguinte:
 
 - [Excel na Web](https://www.office.com/launch/excel).

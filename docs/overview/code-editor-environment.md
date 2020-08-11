@@ -1,14 +1,14 @@
 ---
 title: Ambiente do editor de código de scripts do Office
 description: Os pré-requisitos e as informações de ambiente para scripts do Office no Excel na Web.
-ms.date: 07/10/2020
+ms.date: 07/23/2020
 localization_priority: Normal
-ms.openlocfilehash: 643ea2d5bd69adf4311546465ccd65c08dacf4b4
-ms.sourcegitcommit: ebd1079c7e2695ac0e7e4c616f2439975e196875
+ms.openlocfilehash: 6a496d6c245879eae60e60b9b0cd6fced9e9259a
+ms.sourcegitcommit: ff7fde04ce5a66d8df06ed505951c8111e2e9833
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "45160492"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "46616693"
 ---
 # <a name="office-scripts-code-editor-environment"></a>Ambiente do editor de código de scripts do Office
 
@@ -36,10 +36,6 @@ O editor de código do Excel usa o mesmo mecanismo IntelliSense que o Visual Stu
 ## <a name="external-library-support"></a>Suporte à biblioteca externa
 
 Os scripts do Office não oferecem suporte ao uso de bibliotecas JavaScript externas de terceiros. No momento, você não pode chamar nenhuma biblioteca além das APIs de scripts do Office de um script. Você ainda tem acesso a qualquer [objeto JavaScript interno](../develop/javascript-objects.md), como [Math](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math).
-
-## <a name="browser-support"></a>Suporte do navegador
-
-Os scripts do Office funcionam em qualquer navegador que [ofereça suporte para o Office para a Web](https://support.microsoft.com/office/ad1303e0-a318-47aa-b409-d3a5eb44e452). No entanto, alguns recursos JavaScript não são compatíveis com o Internet Explorer 11 (IE 11). Quaisquer recursos introduzidos no [ES6 ou posterior](https://www.w3schools.com/Js/js_es6.asp) não funcionarão com o IE 11. Se as pessoas na sua organização ainda usarem esse navegador, certifique-se de testar seus scripts nesse ambiente ao compartilhá-los.
 
 ## <a name="see-also"></a>Confira também
 

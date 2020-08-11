@@ -1,14 +1,14 @@
 ---
 title: Executar scripts do Office com automatização de energia
 description: Como obter scripts do Office para Excel na Web trabalhando com um fluxo de trabalho automatizado de energia.
-ms.date: 07/10/2020
+ms.date: 07/24/2020
 localization_priority: Normal
-ms.openlocfilehash: bd8fea08b7a9303ad2ceace787de6457a33fb979
-ms.sourcegitcommit: ebd1079c7e2695ac0e7e4c616f2439975e196875
+ms.openlocfilehash: a427948847d7ab84962cdede7fb44d214592909f
+ms.sourcegitcommit: ff7fde04ce5a66d8df06ed505951c8111e2e9833
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "45160443"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "46616672"
 ---
 # <a name="run-office-scripts-with-power-automate"></a>Executar scripts do Office com automatização de energia
 
@@ -22,7 +22,7 @@ Para começar a combinar os scripts do Office e automatizados de energia, siga o
 
 ## <a name="excel-online-business-connector"></a>Conector do Excel online (comercial)
 
-Os [conectores](/connectors/connectors) são as pontes entre automatização e aplicativos. O [conector do Excel online (Business)](/connectors/excelonlinebusiness) fornece aos seus fluxos acesso às pastas de trabalho do Excel. A ação "executar script" permite chamar qualquer script do Office acessível por meio da pasta de trabalho selecionada. Não só é possível executar scripts por meio de um fluxo, você pode passar dados de e para a pasta de trabalho com o fluxo pelos scripts.
+Os [conectores](/connectors/connectors) são as pontes entre automatização e aplicativos. O [conector do Excel online (Business)](/connectors/excelonlinebusiness) fornece aos seus fluxos acesso às pastas de trabalho do Excel. A ação "executar script" permite chamar qualquer script do Office acessível por meio da pasta de trabalho selecionada. Você também pode fornecer seus parâmetros de entrada de scripts para que os dados possam ser fornecidos pelo fluxo ou que o script retorne informações para etapas posteriores no fluxo.
 
 > [!IMPORTANT]
 > A ação "executar script" fornece às pessoas que usam o conector Excel acesso significativo à sua pasta de trabalho e seus dados. Além disso, há riscos de segurança com scripts que fazem chamadas à API externa, conforme explicado em [chamadas externas da automatização de energia](external-calls.md). Se seu administrador estiver preocupado com a exposição de dados altamente confidenciais, eles poderão desativar o conector do Excel online ou restringir o acesso a scripts do Office por meio dos [controles de administrador de scripts do Office](https://support.microsoft.com/office/19d3c51a-6ca2-40ab-978d-60fa49554dcf).
@@ -46,7 +46,7 @@ Ao adicionar parâmetros de entrada para a função de um script `main` , consid
 
 1. O primeiro parâmetro deve ser do tipo `ExcelScript.Workbook` . O nome do parâmetro não importa.
 
-2. Todo parâmetro deve ter um tipo.
+2. Todo parâmetro deve ter um tipo (como `string` ou `number` ).
 
 3. Os tipos básicos,,,,, `string` `number` `boolean` `any` `unknown` `object` e `undefined` são suportados.
 
@@ -54,7 +54,7 @@ Ao adicionar parâmetros de entrada para a função de um script `main` , consid
 
 5. Há suporte para matrizes aninhadas como parâmetros (mas não como tipos de retorno).
 
-6. Os tipos de União são permitidos se eles forem uma União de literais pertencentes a um único tipo ( `string` , `number` , ou `boolean` ). Também há suporte para Undefined de um tipo com suporte.
+6. Os tipos de União são permitidos se eles forem uma União de literais pertencentes a um único tipo (como `"Left" | "Right"` ). Também há suporte para as undefined de um tipo com suporte, como, por exemplo, `string | undefined` .
 
 7. Os tipos de objeto são permitidos se contiverem Propriedades de tipo `string` , `number` , `boolean` matrizes com suporte ou outros objetos com suporte. O exemplo a seguir mostra objetos aninhados suportados como tipos de parâmetros:
 
@@ -143,7 +143,7 @@ function main(
 ## <a name="see-also"></a>Confira também
 
 - [Executar scripts do Office no Excel na Web com a automatização de energia](../tutorials/excel-power-automate-manual.md)
-- [Transmitir dados para scripts em um fluxo automático de energia de execução automatizada](../tutorials/excel-power-automate-trigger.md)
+- [Passar dados para scripts numa execução automática do fluxo no Power Automate.](../tutorials/excel-power-automate-trigger.md)
 - [Fundamentos de script para scripts do Office no Excel na Web](scripting-fundamentals.md)
 - [Começar a usar o Power Automate](/power-automate/getting-started)
 - [Documentação de referência do conector do Excel online (Business)](/connectors/excelonlinebusiness/)

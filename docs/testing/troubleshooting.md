@@ -1,14 +1,14 @@
 ---
 title: Solução de problemas dos scripts do Office
 description: Dicas e técnicas de depuração para scripts do Office, bem como recursos da ajuda.
-ms.date: 05/14/2020
+ms.date: 07/23/2020
 localization_priority: Normal
-ms.openlocfilehash: 6448980eec45214a589444229db0fd781b9fea13
-ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
+ms.openlocfilehash: 00727b497d49a2d1d3f9c61e259b8d8d75028a59
+ms.sourcegitcommit: ff7fde04ce5a66d8df06ed505951c8111e2e9833
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "44878616"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "46616679"
 ---
 # <a name="troubleshooting-office-scripts"></a>Solução de problemas dos scripts do Office
 
@@ -31,6 +31,15 @@ Os logs não afetam a pasta de trabalho.
 
 Quando o script do Excel encontra um problema em execução, ele produz um erro. Você verá um pop-up de solicitação perguntando se deseja **exibir os logs**. Pressione esse botão para abrir o console e exibir quaisquer erros.
 
+## <a name="automate-tab-not-appearing"></a>Guia automatizar não aparecendo
+
+As etapas a seguir devem ajudar a solucionar problemas relacionados à guia **automatizada** não aparecendo no Excel para a Web.
+
+1. [Verifique se a licença do Microsoft 365 inclui scripts do Office](../overview/excel.md#requirements).
+1. [Peça ao administrador para habilitar o recurso](https://support.office.com/article/office-scripts-settings-in-m365-19d3c51a-6ca2-40ab-978d-60fa49554dcf).
+1. [Verifique se há suporte para o seu navegador](platform-limits.md#browser-support).
+1. [Verifique se os cookies de terceiros estão habilitados](platform-limits.md#third-party-cookies).
+
 ## <a name="help-resources"></a>Recursos de ajuda
 
 [Stack Overflow](https://stackoverflow.com/questions/tagged/office-scripts) é uma comunidade de desenvolvedores que desejam ajudar com problemas de codificação. Muitas vezes, você poderá encontrar a solução para o problema por meio de uma pesquisa rápida de estouro de pilha. Caso contrário, faça a pergunta e marque-a com a marca "Office-scripts". Não deixe de mencionar que você está criando um *script*do Office, não um *suplemento*do Office.
@@ -43,5 +52,6 @@ Se houver um problema com o gravador de ação ou editor, envie comentários atr
 
 - [Scripts do Office no Excel na Web](../overview/excel.md)
 - [Conceitos básicos de script para scripts do Office no Excel na Web](../develop/scripting-fundamentals.md)
-- [Desfazer os efeitos de um script do Office](undo.md)
+- [Limites de plataforma com scripts do Office](platform-limits.md)
 - [Melhorar o desempenho dos scripts do Office](../develop/web-client-performance.md)
+- [Desfazer os efeitos de um script do Office](undo.md)

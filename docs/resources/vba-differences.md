@@ -3,12 +3,12 @@ title: Diferenças entre scripts do Office e macros VBA
 description: As diferenças de comportamento e API entre scripts do Office e macros VBA do Excel.
 ms.date: 06/30/2020
 localization_priority: Normal
-ms.openlocfilehash: 8a8929f0c6a73a8e9041bb4b55cce1edd539e166
-ms.sourcegitcommit: bf9f33c37c6f7805d6b408aa648bb9785a7cd133
+ms.openlocfilehash: 8c246545943341607a7aced4da792b8e49880cb0
+ms.sourcegitcommit: ff7fde04ce5a66d8df06ed505951c8111e2e9833
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "45043388"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "46616686"
 ---
 # <a name="differences-between-office-scripts-and-vba-macros"></a>Diferenças entre scripts do Office e macros VBA
 
@@ -23,7 +23,7 @@ Este artigo descreve as principais diferenças entre as macros VBA (bem como VBA
 
 O VBA foi projetado para a área de trabalho e os scripts do Office foram projetados para a Web. O VBA pode interagir com a área de trabalho de um usuário para se conectar com tecnologias semelhantes, como COM e OLE. No entanto, o VBA não tem uma maneira conveniente de fazer chamadas para a Internet.
 
-Os scripts do Office usam um tempo de execução universal ou JavaScript. Isso fornece comportamento e acessibilidade consistentes, independentemente da máquina que está sendo usada para executar o script. Eles também podem fazer chamadas para outros serviços Web.
+Os scripts do Office usam um tempo de execução universal para JavaScript. Isso fornece comportamento e acessibilidade consistentes, independentemente da máquina que está sendo usada para executar o script. Eles também podem fazer chamadas para outros serviços Web.
 
 ## <a name="security"></a>Segurança
 
