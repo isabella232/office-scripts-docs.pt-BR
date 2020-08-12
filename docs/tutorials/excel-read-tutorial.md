@@ -1,28 +1,25 @@
 ---
 title: Ler os dados da pasta de trabalho com scripts do Office no Excel na Web.
 description: Um tutorial de scripts do Office sobre a leitura de dados de pastas de trabalho e avaliação desses dados no script.
-ms.date: 07/10/2020
+ms.date: 07/20/2020
 localization_priority: Priority
-ms.openlocfilehash: fef1df7cab70ccef67a12ee466af5a89803d0992
-ms.sourcegitcommit: ebd1079c7e2695ac0e7e4c616f2439975e196875
+ms.openlocfilehash: cdd09f13bb53cfff8c051360f2306cdb6956d86d
+ms.sourcegitcommit: ff7fde04ce5a66d8df06ed505951c8111e2e9833
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "45160403"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "46616701"
 ---
 # <a name="read-workbook-data-with-office-scripts-in-excel-on-the-web"></a>Ler os dados da pasta de trabalho com scripts do Office no Excel na Web.
 
-Esse tutorial ensina a ler dados de uma pasta de trabalho com scripts do Office para o Excel na Web. Em seguida, edite os dados lidos e coloque-os de volta na pasta de trabalho.
+Esse tutorial ensina a ler dados de uma pasta de trabalho com scripts do Office para o Excel na Web. Você estará escrevendo um novo script que formatará um extrato bancário e normalizará os dados desse extrato. Como parte desta limpeza de dados, seu script lerá os valores das células de transação, aplicará uma fórmula simples a cada valor e gravará a resposta resultante na pasta de trabalho. A leitura os dados da pasta de trabalho permite a automatização de alguns dos seus processos de tomada de decisão no script.
 
 > [!TIP]
-> Se você não tiver experiência com os scripts do Office, recomendamos começar com o tutorial [Grave, edite e crie scripts do Office no Excel na Web](excel-tutorial.md).
+> Se você não tiver experiência com os scripts do Office, recomendamos começar com o tutorial [Grave, edite e crie scripts do Office no Excel na Web](excel-tutorial.md). [Os Scripts do Office usam TypeScript](../overview/code-editor-environment.md) e este tutorial se destina a pessoas com conhecimento de nível iniciante a intermediário em JavaScript ou TypeScript. Se você é novo no JavaScript, recomendamos começar com o [tutorial da Mozilla sobre JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Introduction).
 
 ## <a name="prerequisites"></a>Pré-requisitos
 
 [!INCLUDE [Tutorial prerequisites](../includes/tutorial-prerequisites.md)]
-
-> [!IMPORTANT]
-> Este tutorial é destinado a pessoas com conhecimento básico ou de nível intermediário de JavaScript ou TypeScript. Se você não conhece o JavaScript, recomendamos que revise o [tutorial do Mozilla JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Introduction). Visite [Scripts do Office no Excel na Web](../overview/excel.md) para saber mais sobre o ambiente de scripts.
 
 ## <a name="read-a-cell"></a>Ler uma célula
 
@@ -150,3 +147,5 @@ Agora que sabemos ler e escrever em uma única célula, vamos generalizar o scri
 ## <a name="next-steps"></a>Próximas etapas
 
 Abra o Editor de códigos e experimente alguns dos [Scripts de exemplo para scripts do Office no Excel na Web](../resources/excel-samples.md). Visite também [Fundamentos de Scripts do Office no Excel na Web](../develop/scripting-fundamentals.md) para saber mais sobre como criar scripts do Office.
+
+A próxima série de tutoriais de Scripts do Office tem foco na utilização de Scripts do Office com o Power Automate. Saiba mais sobre as vantagens da combinação das duas plataformas em [Executar Scripts do Office com o Power Automate](../develop/power-automate-integration.md) ou tente o tutorial [Chamar Scripts no manual de fluxo do Power Automate](excel-power-automate-manual.md) para criar um fluxo no Power Automate que utiliza um Script do Office.

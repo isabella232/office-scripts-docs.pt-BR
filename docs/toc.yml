@@ -36,6 +36,8 @@
           href: testing/troubleshooting.md
         - name: Melhorar o desempenho do script
           href: develop/web-client-performance.md
+        - name: Limites da plataforma
+          href: testing/platform-limits.md
         - name: Desfazer os efeitos de um script do Office
           href: testing/undo.md
         - name: Suporte os Scripts do Office mais antigos

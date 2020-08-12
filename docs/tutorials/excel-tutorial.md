@@ -1,30 +1,25 @@
 ---
 title: Grave, edite e crie scripts do Office no Excel na Web
 description: Um tutorial sobre o básico dos scripts do Office, incluindo a gravação de scripts com o Gravador de ações e a gravação de dados em uma pasta de trabalho.
-ms.date: 01/27/2020
+ms.date: 07/21/2020
 localization_priority: Priority
-ms.openlocfilehash: 1971ff2ffd80554beb6ac561677ee3384f87ca81
-ms.sourcegitcommit: b075eed5a6f275274fbbf6d62633219eac416f26
+ms.openlocfilehash: 96bdc286883d87249de260666c7c8ffe2c94cc0f
+ms.sourcegitcommit: ff7fde04ce5a66d8df06ed505951c8111e2e9833
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "42700037"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "46616770"
 ---
 # <a name="record-edit-and-create-office-scripts-in-excel-on-the-web"></a>Grave, edite e crie scripts do Office no Excel na Web
 
-Este tutorial ensinará os conceitos básicos de gravação, edição e escrita de um Script do Office para Excel na Web.
+Este tutorial ensina os fundamentos da gravação, edição e escrita de um Script do para o Excel na web. Você gravará um script que aplicará uma determinada formatação a uma planilha de registro de vendas. Depois, você editará o script gravado para aplicar outras formatações, criar e classificar uma tabela. Este padrão de registro e edição é uma importante ferramenta para ver como suas ações no Excel são parecidas com um código.
 
 ## <a name="prerequisites"></a>Pré-requisitos
 
-[!INCLUDE [Preview note](../includes/preview-note.md)]
-
-Antes de iniciar este tutorial, você precisará acessar os scripts do Office, que exigem o seguinte:
-
-- [Excel na Web](https://www.office.com/launch/excel).
-- Peça para o administrador [habilitar os scripts do Office da sua organização](https://support.office.com/article/office-scripts-settings-in-m365-19d3c51a-6ca2-40ab-978d-60fa49554dcf), o que adiciona a guia **Automação** à faixa de opções.
+[!INCLUDE [Tutorial prerequisites](../includes/tutorial-prerequisites.md)]
 
 > [!IMPORTANT]
-> Este tutorial é destinado a pessoas com conhecimento básico ou de nível intermediário de JavaScript ou TypeScript. Se você não conhece o JavaScript, recomendamos que revise o [tutorial do Mozilla JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Introduction). Visite [Scripts do Office no Excel na Web](../overview/excel.md) para saber mais sobre o ambiente de scripts.
+> Este tutorial é destinado a pessoas com conhecimento básico ou de nível intermediário de JavaScript ou TypeScript. Se você é novo no JavaScript, recomendamos começar com o [tutorial da Mozilla sobre JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Introduction). Visite o [ambiente do Editor de Código do Scripts do Office](../overview/code-editor-environment.md) para saber mais sobre o ambiente de script.
 
 ## <a name="add-data-and-record-a-basic-script"></a>Adicione dados e grave um script básico
 
@@ -60,31 +55,28 @@ Primeiro, precisaremos de alguns dados e um pequeno script inicial.
 
 O script anterior coloriu a linha "Laranjas" para ficar laranja. Vamos adicionar uma linha amarela aos "Limões".
 
-1. Abra a guia **Automação**.
-2. Pressione o botão **Editor de códigos**.
-3. Abra o script que você gravou na seção anterior. Você deve ver algo semelhante a este código:
+1. A partir do painel, agora aberto em **Detalhes**, pressione o botão **Editar**.
+2. Você deve ver algo semelhante a este código:
 
     ```TypeScript
-    async function main(context: Excel.RequestContext) {
+    function main(workbook: ExcelScript.Workbook) {
       // Set fill color to FFC000 for range Sheet1!A2:C2
-      let workbook = context.workbook;
-      let worksheets = workbook.worksheets;
-      let selectedSheet = worksheets.getActiveWorksheet();
-      selectedSheet.getRange("A2:C2").format.fill.color = "FFC000";
+      let selectedSheet = workbook.getActiveWorksheet();
+      selectedSheet.getRange("A2:C2").getFormat().getFill().setColor("FFC000");
     }
     ```
 
-    Esse código obtém a planilha atual acessando primeiro a coleção de planilhas da pasta de trabalho. Depois, defina a cor de preenchimento do intervalo **A2:C2**.
+    Este código recebe a planilha atual da pasta de trabalho. Depois, defina a cor de preenchimento do intervalo **A2:C2**.
 
     Os intervalos são parte fundamental dos scripts do Office no Excel na Web. Um intervalo é um bloco retangular e contíguo de células que contém valores, fórmula e formatação. Eles são a estrutura básica das células através da qual você executará a maioria das tarefas de script.
 
-4. Adicione a seguinte linha no final do script (entre onde `color` está definido e o encerramento `}`):
+3. Adicione a seguinte linha no final do script (entre onde `color` está definido e o encerramento `}`):
 
     ```TypeScript
-    selectedSheet.getRange("A3:C3").format.fill.color = "yellow";
+    selectedSheet.getRange("A3:C3").getFormat().getFill().setColor("yellow");
     ```
 
-5. Teste o script pressionando **Executar**. Sua pasta de trabalho já deve ter esta aparência:
+4. Teste o script pressionando **Executar**. Sua pasta de trabalho já deve ter esta aparência:
 
     ![Uma linha de dados de vendas de frutas com a linha "Laranjas" é realçada em laranja e a linha "Limões" é realçada em amarelo.](../images/tutorial-2.png)
 
@@ -95,31 +87,29 @@ Vamos converter esses dados de vendas de frutas em uma tabela. Usaremos nosso sc
 1. Adicione a seguinte linha no final do script (antes do encerramento `}`):
 
     ```TypeScript
-    let table = selectedSheet.tables.add("A1:C5", true);
+    let table = selectedSheet.addTable("A1:C5", true);
     ```
 
 2. Essa chamada retorna um `Table` objeto. Vamos usar essa tabela para classificar os dados. Classificaremos os dados em ordem crescente com base nos valores na coluna "Frutas". Adicione a seguinte linha assim que criar a tabela:
 
     ```TypeScript
-    table.sort.apply([{ key: 0, ascending: true }]);
+    table.getSort().apply([{ key: 0, ascending: true }]);
     ```
 
     Seu script deve ter esta aparência:
 
     ```TypeScript
-    async function main(context: Excel.RequestContext) {
-      // Set fill color to FFC000 for range Sheet1!A2:C2
-      let workbook = context.workbook;
-      let worksheets = workbook.worksheets;
-      let selectedSheet = worksheets.getActiveWorksheet();
-      selectedSheet.getRange("A2:C2").format.fill.color = "FFC000";
-      selectedSheet.getRange("A3:C3").format.fill.color = "yellow";
-      let table = selectedSheet.tables.add("A1:C5", true);
-      table.sort.apply([{ key: 0, ascending: true }]);
+    function main(workbook: ExcelScript.Workbook) {
+        // Set fill color to FFC000 for range Sheet12!A2:C2
+        let selectedSheet = workbook.getActiveWorksheet();
+        selectedSheet.getRange("A2:C2").getFormat().getFill().setColor("FFC000");
+        selectedSheet.getRange("A3:C3").getFormat().getFill().setColor("yellow");
+        let table = selectedSheet.addTable("A1:C5", true);
+        table.getSort().apply([{ key: 0, ascending: true }]);
     }
     ```
 
-    As tabelas têm um objeto `TableSort` acessado através da propriedade `Table.sort`. Você pode aplicar critérios de classificação a esse objeto. O `apply` método utiliza uma matriz de `SortField` objetos. Nesse caso, só temos um critério de classificação, por isso só usamos um. `SortField`. `key: 0` define a coluna com os valores que determinam a classificação como "0" (que nesse caso, é a primeira coluna na tabela **A** ). `ascending: true` classifica os dados em ordem crescente (em vez de ordem decrescente).
+    As tabelas possuem um objeto`TableSort`, acessado por meio do método `Table.getSort`. Você pode aplicar critérios de classificação a esse objeto. O `apply` método utiliza uma matriz de `SortField` objetos. Nesse caso, só temos um critério de classificação, por isso só usamos um. `SortField`. `key: 0` define a coluna com os valores que determinam a classificação como "0" (que nesse caso, é a primeira coluna na tabela **A** ). `ascending: true` classifica os dados em ordem crescente (em vez de ordem decrescente).
 
 3. Execute o script. Você deve visualizar uma tabela como esta:
 
