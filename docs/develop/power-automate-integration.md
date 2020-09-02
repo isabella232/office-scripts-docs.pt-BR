@@ -3,18 +3,18 @@ title: Executar scripts do Office com automatização de energia
 description: Como obter scripts do Office para Excel na Web trabalhando com um fluxo de trabalho automatizado de energia.
 ms.date: 07/24/2020
 localization_priority: Normal
-ms.openlocfilehash: a427948847d7ab84962cdede7fb44d214592909f
-ms.sourcegitcommit: ff7fde04ce5a66d8df06ed505951c8111e2e9833
+ms.openlocfilehash: 87bd4e15ef7680a7456077494e3fda8208d6b9d8
+ms.sourcegitcommit: e9a8ef5f56177ea9a3d2fc5ac636368e5bdae1f4
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "46616672"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "47321569"
 ---
 # <a name="run-office-scripts-with-power-automate"></a>Executar scripts do Office com automatização de energia
 
 A [automatização de energia](https://flow.microsoft.com) permite que você adicione scripts do Office a um fluxo de trabalho maior e automatizado. Você pode usar a automatização de energia, como adicionar o conteúdo de um email à tabela de uma planilha ou criar ações em suas ferramentas de gerenciamento de projeto com base nos comentários da pasta de trabalho.
 
-## <a name="getting-started"></a>Introdução
+## <a name="getting-started"></a>Começar a usar
 
 Se você for novo para a automatização de energia, recomendamos [a visita de introdução à automatização de energia](/power-automate/getting-started). Lá, você pode saber mais sobre todas as possibilidades de automação disponíveis para você. Os documentos aqui se concentram em como os scripts do Office trabalham com a automatização de energia e como isso pode ajudar a melhorar a experiência do Excel.
 
@@ -25,7 +25,7 @@ Para começar a combinar os scripts do Office e automatizados de energia, siga o
 Os [conectores](/connectors/connectors) são as pontes entre automatização e aplicativos. O [conector do Excel online (Business)](/connectors/excelonlinebusiness) fornece aos seus fluxos acesso às pastas de trabalho do Excel. A ação "executar script" permite chamar qualquer script do Office acessível por meio da pasta de trabalho selecionada. Você também pode fornecer seus parâmetros de entrada de scripts para que os dados possam ser fornecidos pelo fluxo ou que o script retorne informações para etapas posteriores no fluxo.
 
 > [!IMPORTANT]
-> A ação "executar script" fornece às pessoas que usam o conector Excel acesso significativo à sua pasta de trabalho e seus dados. Além disso, há riscos de segurança com scripts que fazem chamadas à API externa, conforme explicado em [chamadas externas da automatização de energia](external-calls.md). Se seu administrador estiver preocupado com a exposição de dados altamente confidenciais, eles poderão desativar o conector do Excel online ou restringir o acesso a scripts do Office por meio dos [controles de administrador de scripts do Office](https://support.microsoft.com/office/19d3c51a-6ca2-40ab-978d-60fa49554dcf).
+> A ação "executar script" fornece às pessoas que usam o conector Excel acesso significativo à sua pasta de trabalho e seus dados. Além disso, há riscos de segurança com scripts que fazem chamadas à API externa, conforme explicado em [chamadas externas da automatização de energia](external-calls.md). Se seu administrador estiver preocupado com a exposição de dados altamente confidenciais, eles poderão desativar o conector do Excel online ou restringir o acesso a scripts do Office por meio dos [controles de administrador de scripts do Office](/microsoft-365/admin/manage/manage-office-scripts-settings).
 
 ## <a name="data-transfer-in-flows-for-scripts"></a>Transferência de dados em fluxos para scripts
 
@@ -36,7 +36,7 @@ A automatização de energia permite que você passe dados entre as etapas do se
 
 As seções a seguir abrangem os detalhes de entrada e saída para scripts usados na automatização de energia. Se você gostaria de obter uma abordagem prática para aprender este tópico, experimente os dados de [passagem para scripts em um tutorial de fluxo automático automatizado de fluxo](../tutorials/excel-power-automate-trigger.md) automático ou explore o cenário de exemplo de [lembretes automáticos de tarefas](../resources/scenarios/task-reminders.md) .
 
-### <a name="main-parameters-passing-data-to-a-script"></a>`main`Parâmetros: passagem de dados para um script
+### <a name="main-parameters-passing-data-to-a-script"></a>`main` Parâmetros: passagem de dados para um script
 
 Todas as entradas de script são especificadas como parâmetros adicionais para a `main` função. Por exemplo, se você quisesse que um script aceita um `string` que representa um nome como entrada, você alteraria a `main` assinatura para `function main(workbook: ExcelScript.Workbook, name: string)` .
 
