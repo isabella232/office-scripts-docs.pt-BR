@@ -1,16 +1,16 @@
 ---
-title: Suporte à chamada de API externa em scripts do Office
+title: Chamada de API externa nos scripts do Office
 description: Suporte e orientação para fazer chamadas de API externa em um script do Office.
-ms.date: 06/25/2020
+ms.date: 09/24/2020
 localization_priority: Normal
-ms.openlocfilehash: ec8281551cbe7c500eee40ec86067e5efbfcfc31
-ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
-ms.translationtype: Auto
+ms.openlocfilehash: fa77e606e2b3ab90144507660d71561b278e82e5
+ms.sourcegitcommit: ce72354381561dc167ea0092efd915642a9161b3
+ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "44878693"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "48319627"
 ---
-# <a name="external-api-call-support-in-office-scripts"></a>Suporte à chamada de API externa em scripts do Office
+# <a name="external-api-call-support-in-office-scripts"></a>Chamada de API externa nos scripts do Office
 
 A plataforma de scripts do Office não dá suporte a chamadas para [APIs externas](https://developer.mozilla.org/docs/Web/API). No entanto, essas chamadas podem ser executadas sob as circunstâncias certas. Chamadas externas só podem ser feitas por meio do cliente Excel, não através da automatização de energia [sob circunstâncias normais](#external-calls-from-power-automate).
 
@@ -42,7 +42,7 @@ async function main(workbook: ExcelScript.Workbook): Promise <void> {
 Qualquer chamada de API externa falha quando um script é executado com automatização de energia. Essa é uma diferença comportamental entre a execução de um script por meio do cliente do Excel e através da automatização de energia. Certifique-se de verificar os scripts para essas referências antes de criá-las em um fluxo.
 
 > [!WARNING]
-> A falha de chamadas externas do [Excel online Connector](/connectors/excelonlinebusiness) em energia automatizada está lá para ajudar a sustentar as políticas de prevenção de perda de dados existentes. No entanto, os scripts executados através da automatização de energia estão prontos para fora da sua organização e fora dos firewalls da sua organização. Para obter proteção adicional de usuários mal-intencionados nesse ambiente externo, seu administrador pode controlar o uso de scripts do Office. O administrador pode desabilitar o conector do Excel online para automatizar ou desativar scripts do Office para Excel na Web por meio dos [controles de administrador de scripts do Office](https://support.microsoft.com/office/19d3c51a-6ca2-40ab-978d-60fa49554dcf).
+> A falha de chamadas externas do [Excel online Connector](/connectors/excelonlinebusiness) em energia automatizada está lá para ajudar a sustentar as políticas de prevenção de perda de dados existentes. No entanto, os scripts executados através da automatização de energia estão prontos para fora da sua organização e fora dos firewalls da sua organização. Para obter proteção adicional de usuários mal-intencionados nesse ambiente externo, seu administrador pode controlar o uso de scripts do Office. O administrador pode desabilitar o conector do Excel online para automatizar ou desativar scripts do Office para Excel na Web por meio dos [controles de administrador de scripts do Office](/microsoft-365/admin/manage/manage-office-scripts-settings).
 
 ## <a name="see-also"></a>Confira também
 

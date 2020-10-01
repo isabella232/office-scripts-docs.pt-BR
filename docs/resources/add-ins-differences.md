@@ -3,12 +3,12 @@ title: Diferenças entre os scripts do Office e os suplementos do Office
 description: As diferenças de comportamento e API entre scripts do Office e suplementos do Office.
 ms.date: 06/01/2020
 localization_priority: Normal
-ms.openlocfilehash: fc2029780190672c633e00e26f44273e4311c754
-ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
+ms.openlocfilehash: ddac6cc68874da34ae76c66a5c5b84ffa7a60eec
+ms.sourcegitcommit: ce72354381561dc167ea0092efd915642a9161b3
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "44878658"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "48319648"
 ---
 # <a name="differences-between-office-scripts-and-office-add-ins"></a>Diferenças entre os scripts do Office e os suplementos do Office
 
@@ -30,7 +30,7 @@ Atualmente, os scripts do Office só têm suporte no Excel na Web. Toda gravaç�
 
 Não há versão síncrona das APIs JavaScript do Office para suplementos do Office. As APIs de scripts padrão do Office são exclusivas da plataforma e têm várias otimizações e alterações para evitar o uso do `load` / `sync` paradigma.
 
-Algumas das [APIs JavaScript do Excel](/javascript/api/excel?view=excel-js-preview) são compatíveis com as [APIs assíncronas de scripts do Office](../develop/excel-async-model.md). Alguns exemplos de blocos de código de suplemento podem ser portados para `Excel.run` blocos com tradução mínima. Enquanto as duas plataformas compartilham a funcionalidade, há intervalos. Os dois conjuntos de API principal que os suplementos do Office têm, mas os scripts do Office não são eventos e as APIs comuns.
+Algumas das [APIs JavaScript do Excel](/javascript/api/excel?view=excel-js-preview&preserve-view=true) são compatíveis com as [APIs assíncronas de scripts do Office](../develop/excel-async-model.md). Alguns exemplos de blocos de código de suplemento podem ser portados para `Excel.run` blocos com tradução mínima. Enquanto as duas plataformas compartilham a funcionalidade, há intervalos. Os dois conjuntos de API principal que os suplementos do Office têm, mas os scripts do Office não são eventos e as APIs comuns.
 
 ### <a name="events"></a>Eventos
 
