@@ -1,14 +1,14 @@
 ---
 title: Solução de problemas dos scripts do Office
 description: Dicas e técnicas de depuração para scripts do Office, bem como recursos da ajuda.
-ms.date: 07/23/2020
+ms.date: 10/08/2020
 localization_priority: Normal
-ms.openlocfilehash: 0a2c9ab209bc36e8ba2bdb25a6ab79d9f900f29a
-ms.sourcegitcommit: e9a8ef5f56177ea9a3d2fc5ac636368e5bdae1f4
+ms.openlocfilehash: 9b3f4be778f3cdb4711d1e41d4d68f87ebca8152
+ms.sourcegitcommit: 42fa3b629c93930b4e73e9c4c01d0c8bdf6d7487
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "47321590"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "48411540"
 ---
 # <a name="troubleshooting-office-scripts"></a>Solução de problemas dos scripts do Office
 
@@ -31,7 +31,7 @@ Os logs não afetam a pasta de trabalho.
 
 Quando o script do Excel encontra um problema em execução, ele produz um erro. Você verá um pop-up de solicitação perguntando se deseja **exibir os logs**. Pressione esse botão para abrir o console e exibir quaisquer erros.
 
-## <a name="automate-tab-not-appearing"></a>Guia automatizar não aparecendo
+## <a name="automate-tab-not-appearing-or-office-scripts-unavailable"></a>Guia automatizar não aparecendo ou os scripts do Office não estão disponíveis
 
 As etapas a seguir devem ajudar a solucionar problemas relacionados à guia **automatizada** não aparecendo no Excel na Web.
 
@@ -39,6 +39,8 @@ As etapas a seguir devem ajudar a solucionar problemas relacionados à guia **au
 1. [Peça ao administrador para habilitar o recurso](/microsoft-365/admin/manage/manage-office-scripts-settings).
 1. [Verifique se há suporte para o seu navegador](platform-limits.md#browser-support).
 1. [Verifique se os cookies de terceiros estão habilitados](platform-limits.md#third-party-cookies).
+
+[!INCLUDE [Teams support note](../includes/teams-support-note.md)]
 
 ## <a name="help-resources"></a>Recursos de ajuda
 
