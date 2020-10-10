@@ -5,7 +5,7 @@ ms.date: 06/09/2020
 localization_priority: Normal
 ms.openlocfilehash: f764c37dafdd964e9435d504770d10b1608428b8
 ms.sourcegitcommit: aec3c971c6640429f89b6bb99d2c95ea06725599
-ms.translationtype: Auto
+ms.translationtype: MT
 ms.contentlocale: pt-BR
 ms.lasthandoff: 06/25/2020
 ms.locfileid: "44878721"
@@ -154,10 +154,10 @@ Este cenário usa [automatização de energia](https://flow.microsoft.com) e [o 
 
 10. Escolha **acionar manualmente um fluxo** das opções e pressione **criar**.
 
-11. O fluxo precisa chamar o script **obter pessoas** para obter todos os funcionários com campos de status vazios. Pressione **nova etapa** e selecione **Excel online (comercial)**. Em **ações**, selecione **Executar script (versão prévia)**. Forneça as seguintes entradas para a etapa de fluxo:
+11. O fluxo precisa chamar o script **obter pessoas** para obter todos os funcionários com campos de status vazios. Pressione **nova etapa** e selecione **Excel online (comercial)**. Em **Ações**, selecione **executar script (visualização)**. Forneça as seguintes entradas para a etapa de fluxo:
 
-    - **Local**: onedrive for Business
-    - **Biblioteca de documentos**: onedrive
+    - **Localização**: OneDrive for Business
+    - **Biblioteca de Documentos**: OneDrive
     - **Arquivo**: task-reminders.xlsx
     - **Script**: obter pessoas
 
@@ -213,10 +213,10 @@ Este cenário usa [automatização de energia](https://flow.microsoft.com) e [o 
     - **Mensagem de atualização**: Obrigado por enviar seu relatório de status. Sua resposta foi adicionada com êxito à planilha.
     - **Atualizar cartão**: Sim
 
-16. No bloco **aplicar a cada** , seguindo o **cartão adaptável postar em um usuário do Teams e aguardar uma resposta**, pressione **Adicionar uma ação**. Selecione **Excel online (comercial)**. Em **ações**, selecione **Executar script (versão prévia)**. Forneça as seguintes entradas para a etapa de fluxo:
+16. No bloco **aplicar a cada** , seguindo o **cartão adaptável postar em um usuário do Teams e aguardar uma resposta**, pressione **Adicionar uma ação**. Selecione **Excel online (comercial)**. Em **Ações**, selecione **executar script (visualização)**. Forneça as seguintes entradas para a etapa de fluxo:
 
-    - **Local**: onedrive for Business
-    - **Biblioteca de documentos**: onedrive
+    - **Localização**: OneDrive for Business
+    - **Biblioteca de Documentos**: OneDrive
     - **Arquivo**: task-reminders.xlsx
     - **Script**: salvar status
     - **senderEmail**: email *(conteúdo dinâmico do Excel)*
