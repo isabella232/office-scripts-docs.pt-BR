@@ -1,14 +1,14 @@
 ---
 title: Limites e requisitos de plataforma com scripts do Office
 description: Limites de recurso e suporte de navegador para scripts do Office quando usados com o Excel na Web
-ms.date: 10/09/2020
+ms.date: 10/23/2020
 localization_priority: Normal
-ms.openlocfilehash: df468192f443b912e26411e46c9f953e046e55ec
-ms.sourcegitcommit: 42fa3b629c93930b4e73e9c4c01d0c8bdf6d7487
+ms.openlocfilehash: 61f5c55be278ae056014d3b01e4176354d913f87
+ms.sourcegitcommit: d3e7681e262bdccc281fcb7b3c719494202e846b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "48411554"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "48930075"
 ---
 # <a name="platform-limits-and-requirements-with-office-scripts"></a>Limites e requisitos de plataforma com scripts do Office
 
@@ -26,6 +26,13 @@ Seu navegador precisa de cookies de terceiros habilitados para mostrar a guia **
 
 > [!NOTE]
 > Alguns navegadores se referem a essa configuração como "todos os cookies", em vez de "cookies terceirizados".
+
+#### <a name="instructions-for-adjusting-cookie-settings-in-popular-browsers"></a>Instruções para ajustar as configurações de cookies em navegadores populares
+
+- [Chrome](https://support.google.com/chrome/answer/95647)
+- [Borda](https://support.microsoft.com/microsoft-edge/temporarily-allow-cookies-and-site-data-in-microsoft-edge-597f04f2-c0ce-f08c-7c2b-541086362bd2)
+- [Firefox](https://support.mozilla.org/kb/disable-third-party-cookies)
+- [Safari](https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac)
 
 ## <a name="data-limits"></a>Limites de dados
 
